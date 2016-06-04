@@ -1,0 +1,51 @@
+﻿@model WebDongHo.DbContext.Nhanhieu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nhanhieu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thutu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thutu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hienthi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hienthi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NhanhieuID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

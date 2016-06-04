@@ -1,0 +1,122 @@
+﻿@model IEnumerable<WebDongHo.DbContext.Sanpham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Quản lý sản phẩm
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Loaiday.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LoaiSP.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Loaivo.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nangluong.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nhanhieu.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ten)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mota)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Giagoc)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Giaban)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Soluong)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Khuyenmai)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsNoibat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hienthi)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Loaiday.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LoaiSP.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Loaivo.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nangluong.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nhanhieu.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ten)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mota)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Giagoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Giaban)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Soluong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Khuyenmai)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsNoibat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hienthi)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.SanphamID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.SanphamID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.SanphamID })
+                        </td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+

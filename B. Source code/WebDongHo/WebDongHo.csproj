@@ -107,6 +107,7 @@
     <Content Include="Content\memenu.css" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
+    <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -162,6 +163,47 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LeftSideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_NavTopLink.cshtml" />
+    <Content Include="Areas\Admin\Views\Hinhanhs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Hinhanhs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Hinhanhs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Hinhanhs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Hinhanhs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaidays\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaidays\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaidays\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaidays\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaidays\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSPs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSPs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSPs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSPs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSPs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaivoes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaivoes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaivoes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaivoes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Loaivoes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Nangluongs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Nangluongs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Nangluongs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Nangluongs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Nangluongs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhanhieux\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhanhieux\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhanhieux\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhanhieux\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Nhanhieux\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -182,6 +224,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\responsiveslides.min.js" />
+    <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\simpleCart.min.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -190,6 +233,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HinhanhsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaidaysController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiSPsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaivoesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NangluongsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NhanhieuxController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanphamsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DbContext\Hinhanh.cs" />
     <Compile Include="DbContext\Loaiday.cs" />
@@ -223,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

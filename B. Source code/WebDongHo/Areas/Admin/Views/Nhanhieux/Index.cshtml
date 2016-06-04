@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebDongHo.DbContext.Nhanhieu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thutu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hienthi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thutu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hienthi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NhanhieuID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NhanhieuID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NhanhieuID })
+        </td>
+    </tr>
+}
+
+</table>
