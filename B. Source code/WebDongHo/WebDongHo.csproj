@@ -1278,6 +1278,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhsachSPModel.cs" />
+    <Compile Include="Models\DanhsachSPRequest.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
