@@ -60,7 +60,11 @@
         [Display(Name = "Hiển thị")]
         public bool Hienthi { get; set; }
 
-        
+        [Display(Name = "Hiển thị trang chủ")]
+        public bool HienthiTrangChu { get; set; }
+
+        [Display(Name = "Đã xóa")]
+        public bool IsDel { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hinhanh> Hinhanhs { get; set; }
