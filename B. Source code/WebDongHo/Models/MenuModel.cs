@@ -8,6 +8,7 @@ namespace WebDongHo.Models
 {
     public class MenuModel
     {
+        public List<LoaiSP> LoaiSPs { get; set; }
         public List<Nhanhieu> Nhanhieus { get; set; }
         public List<Nangluong> Nangluongs { get; set; }
         public List<Loaiday> Loaidays { get; set; }
@@ -21,6 +22,7 @@ namespace WebDongHo.Models
                 Nangluongs = db.Nangluongs.SqlQuery("Nangluong_GetForMenu").ToList();
                 Loaidays = db.Loaidays.SqlQuery("Loaiday_GetForMenu").ToList();
                 Loaivos = db.Loaivoes.SqlQuery("Loaivo_GetForMenu").ToList();
+                LoaiSPs = db.LoaiSPs.SqlQuery("LoaiSP_GetForMenu").ToList();
             }
             catch (Exception)
             {
@@ -28,6 +30,7 @@ namespace WebDongHo.Models
                 Nangluongs = new List<Nangluong>();
                 Loaidays = new List<Loaiday>();
                 Loaivos = new List<Loaivo>();
+                LoaiSPs = new List<LoaiSP>();
             }
 
 

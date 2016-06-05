@@ -11,7 +11,62 @@
                 <div class="top-nav">
                     <ul class="memenu skyblue">
                         <li class="active"><a href="/">Trang chủ</a></li>
-                        <li class="grid">
+                        @foreach (var lsp in m.LoaiSPs)
+                        {
+                            <li class="grid">
+                                <a href="/DanhsachSP/Index?lsp=@lsp.LoaiSPID">@lsp.Ten</a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Nhãn hiệu</h4>
+                                            <ul>
+                                                @foreach (var item in m.Nhanhieus)
+                                                {
+                                                    <li><a href="javascript:;">@item.Ten</a></li>
+                                                }
+                                                <li><a href="javascript:;">Tất cả</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Năng lượng</h4>
+                                            <ul>
+                                                @foreach (var item in m.Nangluongs)
+                                                {
+                                                    <li><a href="javascript:;">@item.Ten</a></li>
+                                                }
+                                            </ul>
+                                            <h4>Loại dây</h4>
+                                            <ul>
+                                                @foreach (var item in m.Loaidays)
+                                                {
+                                                    <li><a href="javascript:;">@item.Ten</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Loại vỏ</h4>
+                                            <ul>
+                                                @foreach (var item in m.Loaivos)
+                                                {
+                                                    <li><a href="javascript:;">@item.Ten</a></li>
+                                                }
+                                            </ul>
+                                            <h4>Khoảng giá</h4>
+                                            <ul>
+                                                <li><a href="javascript:;">Giá dưới 5 triệu</a></li>
+                                                <li><a href="javascript:;">Giá từ 5 - 10 triệu</a></li>
+                                                <li><a href="javascript:;">Giá từ 10 - 20 triệu</a></li>
+                                                <li><a href="javascript:;">Giá từ 20 - 50 triệu</a></li>
+                                                <li><a href="javascript:;">Giá trên 50 triệu</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+
+                        @*<li class="grid">
                             <a href="javascript:;">Đồng hồ nam</a>
                             <div class="mepanel">
                                 <div class="row">
@@ -160,7 +215,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li>*@
                         <li class="grid">
                             <a href="javascript:;">Tin tức</a>
                         </li>

@@ -8,10 +8,10 @@ namespace WebDongHo.Models
 {
     public class HomeModel
     {
-        public List<Sanpham> lstNoibat { get; set; }
+        public List<Sanpham> lstSP { get; set; }
         public HomeModel()
         {
-            lstNoibat = new List<Sanpham>();
+            lstSP = new List<Sanpham>();
         }
     }
 }

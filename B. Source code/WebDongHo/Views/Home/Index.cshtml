@@ -12,15 +12,10 @@
     .mask img {
         height: 275px;
     }
-
-    .information .infor-left h3 {
-        font-weight: bold;
+    .product-left{
+        margin-top:25px;
     }
-
-    .information {
-        background-color: #f2f2f2;
-        padding-top: 30px;
-    }
+    
 </style>
 
 <!--banner-starts-->
@@ -110,24 +105,34 @@
 <div class="product">
     <div class="container">
         <div class="product-top">
+
+            <!--Đồng hồ nam nổi bật-->
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
                         <h1>Sản phẩm nổi bật</h1>
                     </div>
-                    <div class="product-one">
+                    <div >
                         @{
-                            Sanpham s;
-                            for (int i = 0; i < Model.lstNoibat.Count; i++)
+                            string urlAnhSP ="";
+                            foreach (var s in Model.lstSP)
                             {
-                                s = Model.lstNoibat[i];
+                                if(s.Hinhanhs.Count == 0)
+                                {
+                                    urlAnhSP = "/images/nophoto.jpg";
+                                }
+                                else
+                                {
+                                    urlAnhSP = s.Hinhanhs.ToList()[0].Url;
+                                }
                                 <div class="col-md-3 product-left">
-                                    <div class="product-main simpleCart_shelfItem">
-                                        <a href="javascript:;" class="mask"><img class="img-responsive zoom-img" src="@s.Hinhanhs.ToList()[0].Url" alt="" /></a>
+                                    <div class="product-main">
+                                        <a href="javascript:;" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
                                         <div class="product-bottom">
                                             <p>@s.Nhanhieu.Ten</p>
-                                            <h3 style="font-weight:bold">@s.Ten</h3>
-                                            <p>@s.LoaiSP.Ten</p>
+                                            <a href="/"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
+                                            <br />
+                                            <a href="/" style="color:#999;">@s.LoaiSP.Ten</a>
                                             <h4>
                                                 <span style="display:block;">
                                                     <a class="item_add" href="#"><i></i></a>&nbsp;
@@ -149,7 +154,7 @@
                                         </div>
                                         <div class="srch">
                                             @if (s.Khuyenmai > 0)
-                                            {
+                            {
                                                 <span>-@(s.Khuyenmai)%</span>
                                             }
                                         </div>
@@ -164,48 +169,3 @@
     </div>
 </div>
 <!--product-end-->
-<!--information-starts-->
-<div class="information">
-    <div class="container">
-        <div class="infor-top">
-            <div class="col-md-3 infor-left">
-                <h3>Mạng xã hội</h3>
-                <ul>
-                    <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
-                    <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
-                    <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Thông tin</h3>
-                <ul>
-                    <li><a href="#"><p>Chương trình khuyến mại</p></a></li>
-                    <li><a href="#"><p>Hướng dẫn và mẹo sử dụng</p></a></li>
-                    <li><a href="#"><p>Điều kiện bảo hành</p></a></li>
-                    <li><a href="contact.html"><p>Liên hệ</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Tài khoản người dùng</h3>
-                <ul>
-                    <li><a href="account.html"><p>Đăng nhập</p></a></li>
-                    <li><a href="#"><p>Đăng kí</p></a></li>
-                    <li><a href="#"><p>Thông tin tài khoản</p></a></li>
-                    <li><a href="#"><p>Lịch sử mua hàng</p></a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 infor-left">
-                <h3>Thông tin cửa hàng</h3>
-                <h4>
-                    Luxury Watches shop,
-                    <span>236 Hoàng Quốc Việt,</span>
-                    Cầu Giấy, Hà Nội
-                </h4>
-                <h5>+955 123 4567</h5>
-                <p><a href="mailto:example@email.com">contact@example.com</a></p>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
-<!--information-end-->
