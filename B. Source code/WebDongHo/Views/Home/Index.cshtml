@@ -65,90 +65,100 @@
 </script>
 <!--End-slider-script-->
 <!--about-starts-->
-@*<div class="about">
+<div class="about">
         <div class="container">
             <div class="about-top grid-1">
                 <div class="col-md-4 about-left">
-                    <figure class="effect-bubba">
-                        <img class="img-responsive" src="/images/abt-1.jpg" alt="" />
-                        <figcaption>
-                            <h2>Nulla maximus nunc</h2>
-                            <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                        </figcaption>
-                    </figure>
+                    <a href="/">
+                        <figure class="effect-bubba">
+                            <img style="height:350px" class="img-responsive" src="~/images/Home/145654132118.jpg" alt="" />
+                            <figcaption style="font-size:18px">
+                                <h2>Đồng hồ nam</h2>
+                                <p>Mạnh mẽ, nam tính, khẳng định đẳng cấp phái mạnh.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="col-md-4 about-left">
-                    <figure class="effect-bubba">
-                        <img class="img-responsive" src="/images/abt-2.jpg" alt="" />
-                        <figcaption>
-                            <h4>Mauris erat augue</h4>
-                            <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                        </figcaption>
-                    </figure>
+                    <a href="/">
+                        <figure class="effect-bubba">
+                            <img style="height:350px" class="img-responsive" src="~/images/Home/dong-ho-nu-thoi-trang-cao-cap-melissa-white_26.jpg" alt="" />
+                            <figcaption style="font-size:18px">
+                                <h4>Đồng hồ nữ</h4>
+                                <p>Trang nhã, lịch thiệp, tinh tế đậm chất nữ tính.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="col-md-4 about-left">
-                    <figure class="effect-bubba">
-                        <img class="img-responsive" src="/images/abt-3.jpg" alt="" />
-                        <figcaption>
-                            <h4>Cras elit mauris</h4>
-                            <p>In sit amet sapien eros Integer dolore magna aliqua</p>
-                        </figcaption>
-                    </figure>
+                    <a href="/">
+                        <figure class="effect-bubba">
+                            <img style="height:350px" class="img-responsive" src="~/images/Home/ma-d29-dong-ho-doi-baishuns-mat-trang-sang-trong.jpg" alt="" />
+                            <figcaption style="font-size:18px">
+                                <h4>Đồng hồ đôi</h4>
+                                <p>Hãy để tình yêu của bạn đi cùng năm tháng.</p>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
-    </div>*@
+    </div>
 <!--about-end-->
 <!--product-starts-->
 <div class="product">
     <div class="container">
         <div class="product-top">
-            <div class="page-header">
-                <h1>Sản phẩm nổi bật</h1>
-            </div>
-            <div class="product-one">
-                @{
-                    Sanpham s;
-                    for (int i = 0; i < Model.lstNoibat.Count; i++)
-                    {
-                        s = Model.lstNoibat[i];
-                        <div class="col-md-3 product-left">
-                            <div class="product-main simpleCart_shelfItem">
-                                <a href="javascript:;" class="mask"><img class="img-responsive zoom-img" src="@s.Hinhanhs.ToList()[0].Url" alt="" /></a>
-                                <div class="product-bottom">
-                                    <p>@s.Nhanhieu.Ten</p>
-                                    <h3 style="font-weight:bold">@s.Ten</h3>
-                                    <p>@s.LoaiSP.Ten</p>
-                                    <h4>
-                                        <span style="display:block;">
-                                            <a class="item_add" href="#"><i></i></a>&nbsp;
-                                            <span class="item_price">
-                                                <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
-                                                    @((s.Giaban * 1000).ToString("#,#"))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h1>Sản phẩm nổi bật</h1>
+                    </div>
+                    <div class="product-one">
+                        @{
+                            Sanpham s;
+                            for (int i = 0; i < Model.lstNoibat.Count; i++)
+                            {
+                                s = Model.lstNoibat[i];
+                                <div class="col-md-3 product-left">
+                                    <div class="product-main simpleCart_shelfItem">
+                                        <a href="javascript:;" class="mask"><img class="img-responsive zoom-img" src="@s.Hinhanhs.ToList()[0].Url" alt="" /></a>
+                                        <div class="product-bottom">
+                                            <p>@s.Nhanhieu.Ten</p>
+                                            <h3 style="font-weight:bold">@s.Ten</h3>
+                                            <p>@s.LoaiSP.Ten</p>
+                                            <h4>
+                                                <span style="display:block;">
+                                                    <a class="item_add" href="#"><i></i></a>&nbsp;
+                                                    <span class="item_price">
+                                                        <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
+                                                            @((s.Giaban * 1000).ToString("#,#"))
+                                                        </span>
+                                                        VNĐ
+                                                    </span>
                                                 </span>
-                                                VNĐ
-                                            </span>
-                                        </span>
 
-                                        <span class="item_price" style="margin-left:35px;display:block">
-                                            <span style="text-decoration:line-through">
-                                                @((s.Giagoc * 1000).ToString("#,#"))
-                                            </span>
-                                            VNĐ
-                                        </span>
-                                    </h4>
+                                                <span class="item_price" style="margin-left:35px;display:block">
+                                                    <span style="text-decoration:line-through">
+                                                        @((s.Giagoc * 1000).ToString("#,#"))
+                                                    </span>
+                                                    VNĐ
+                                                </span>
+                                            </h4>
+                                        </div>
+                                        <div class="srch">
+                                            @if (s.Khuyenmai > 0)
+                                            {
+                                                <span>-@(s.Khuyenmai)%</span>
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="srch">
-                                    @if (s.Khuyenmai > 0)
-                                    {
-                                        <span>-@(s.Khuyenmai)%</span>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
+                            }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>

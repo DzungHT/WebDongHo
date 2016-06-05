@@ -112,10 +112,12 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\Home\0%287%29.jpg" />
     <Content Include="images\11.png" />
-    <Content Include="images\abt-1.jpg" />
-    <Content Include="images\abt-2.jpg" />
-    <Content Include="images\abt-3.jpg" />
+    <Content Include="images\Home\145654132118.jpg" />
+    <Content Include="images\Home\abt-1.jpg" />
+    <Content Include="images\Home\abt-2.jpg" />
+    <Content Include="images\Home\abt-3.jpg" />
     <Content Include="images\arrow.png" />
     <Content Include="images\Avatar\Ava_nv_1.jpg" />
     <Content Include="images\Avatar\no_image_user.png" />
@@ -130,6 +132,9 @@
     <Content Include="images\cart-3.png" />
     <Content Include="images\close.png" />
     <Content Include="images\crossword.png" />
+    <Content Include="images\Home\dong-ho-nu-thoi-trang-cao-cap-melissa-white_26.jpg" />
+    <Content Include="images\Home\GA-110GB-1A_l.png" />
+    <Content Include="images\Home\ma-d29-dong-ho-doi-baishuns-mat-trang-sang-trong.jpg" />
     <Content Include="images\p-1.png" />
     <Content Include="images\p-2.png" />
     <Content Include="images\p-3.png" />
@@ -190,6 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DangnhapController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DbContext\Hinhanh.cs" />
     <Compile Include="DbContext\Loaiday.cs" />
@@ -223,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Dangnhap\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

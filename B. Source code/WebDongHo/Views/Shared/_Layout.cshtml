@@ -20,22 +20,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--theme-style-->
     <link href="~/Content/Site.css" rel="stylesheet" />
     <!--//theme-style-->
-
     <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
     <script src="~/Scripts/jquery-1.12.3.min.js"></script>
 
-    
+
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
-    <script src="~/Scripts/simpleCart.min.js"></script>
     <link href="~/Content/memenu.css" rel="stylesheet" media="all" type="text/css" />
     <script src="~/Scripts/memenu.js"></script>
     <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
     <!--dropdown-->
     <script src="~/Scripts/jquery.easydropdown.js"></script>
+
+    <style>
+        .top-header-main *{
+            color:#fff;
+        }
+        .top-header-left a:hover{
+            color:#fff;
+        }
+        .top-header-left-content {
+            padding: 10px;
+        }
+            .top-header-left-content div {
+                margin-right: 20px;
+            }
+
+        #total_cart{
+            margin-right:5px;
+        }
+    </style>
 </head>
 <body>
-
+    <!--top-header-->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-main">
+                <div class="col-md-6 top-header-left">
+                    <div class="top-header-left-content" style="color:#fff;">
+                        <a href="/">Đăng nhập</a> | <a href="/" >Đăng ký</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 top-header-right">
+                    <div class="top-header-right-content">
+                        <a href="/" style="display:inline-block;float:right;">
+                            <img class="pull-right" src="images/cart-1.png" alt="" />
+                            <div id="total_cart" class="pull-right">
+                                <span>0</span>
+                            </div>
+                            <br />
+                            <div class="pull-right">Sản phẩm</div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
     <!--start-logo-->
     <div class="logo">
         <a href="/"><h1>Luxury Watches</h1></a>

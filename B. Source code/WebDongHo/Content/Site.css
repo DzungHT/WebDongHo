@@ -522,7 +522,7 @@ ul.callbacks_tabs.callbacks2_tabs {
 /*--banner-Part-Ends-Here --*/
 /*--about-starts--*/
 .about {
-    padding: 5em 0px 4em 0px;
+    padding: 5em 0px 0px 0px;
 }
 
 .about-left img {
@@ -682,7 +682,7 @@ figure.effect-bubba {
 }
 
 .product {
-    padding: 3em 0px 6em 0px;
+    padding: 0px 0px 6em 0px;
 }
 
 .product-bottom h3 {
