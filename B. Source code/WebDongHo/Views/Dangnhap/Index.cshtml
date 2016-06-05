@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Đăng nhập</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--account-starts-->
+<div class="account">
+    <div class="container">
+        <div class="account-top heading">
+            <h2>Đăng nhập</h2>
+        </div>
+        <div class="account-main">
+            <div class="col-md-6 account-left">
+                <h3>Đã có tài khoản</h3>
+                <div class="account-bottom">
+                    <form method="post">
+                        <input placeholder="Tên tài khoản" type="text" tabindex="3" required>
+                        <input placeholder="Mật khẩu" type="password" tabindex="4" required>
+                        <div class="address">
+                            <a class="forgot" href="javascript:;">Quên mật khẩu?</a>
+                            <input type="submit" value="Đăng nhập">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 account-right account-left">
+                <h3>Tạo tài khoản mới</h3>
+                <p>Bằng việc tạo tài khoản, các đơn đặt hàng của bạn sẽ được chúng tôi ưu tiên tiếp nhận trước.</p>
+                <a href="/Dangky">Tạo tài khoản</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--account-end-->
+

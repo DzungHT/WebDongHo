@@ -60,7 +60,10 @@
         [Display(Name = "Hiển thị")]
         public bool Hienthi { get; set; }
 
-        
+        [Display(Name = "Hiển thị")]
+        public bool HienthiTrangChu { get; set; }
+
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hinhanh> Hinhanhs { get; set; }
