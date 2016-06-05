@@ -1146,10 +1146,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\DashBoard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Hinhanhs\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Hinhanhs\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Hinhanhs\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Hinhanhs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Hinhanhs\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Loaidays\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Loaidays\Delete.cshtml" />

@@ -15,109 +15,38 @@ namespace WebDongHo.Areas.Admin.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: Admin/Hinhanhs
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var hinhanhs = db.Hinhanhs.Include(h => h.Sanpham);
-            return View(hinhanhs.ToList());
+            var hinhanhs = db.Hinhanhs.Where(x => x.SanphamID == id).ToList();
+            return PartialView(hinhanhs.ToList());
         }
 
-        // GET: Admin/Hinhanhs/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Hinhanh hinhanh = db.Hinhanhs.Find(id);
-            if (hinhanh == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hinhanh);
-        }
-
-        // GET: Admin/Hinhanhs/Create
-        public ActionResult Create()
-        {
-            ViewBag.SanphamID = new SelectList(db.Sanphams, "SanphamID", "Ten");
-            return View();
-        }
-
-        // POST: Admin/Hinhanhs/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "HinhanhID,SanphamID,Url,Hienthi")] Hinhanh hinhanh)
         {
+            ViewBag.IsSuccess = false;
             if (ModelState.IsValid)
             {
                 db.Hinhanhs.Add(hinhanh);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.IsSuccess = true;
             }
-
-            ViewBag.SanphamID = new SelectList(db.Sanphams, "SanphamID", "Ten", hinhanh.SanphamID);
-            return View(hinhanh);
+            List<Hinhanh> lstHinhanh = db.Hinhanhs.Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
+            return PartialView("Index", lstHinhanh);
         }
-
-        // GET: Admin/Hinhanhs/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Hinhanh hinhanh = db.Hinhanhs.Find(id);
-            if (hinhanh == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.SanphamID = new SelectList(db.Sanphams, "SanphamID", "Ten", hinhanh.SanphamID);
-            return View(hinhanh);
-        }
-
-        // POST: Admin/Hinhanhs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HinhanhID,SanphamID,Url,Hienthi")] Hinhanh hinhanh)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(hinhanh).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.SanphamID = new SelectList(db.Sanphams, "SanphamID", "Ten", hinhanh.SanphamID);
-            return View(hinhanh);
-        }
-
-        // GET: Admin/Hinhanhs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Hinhanh hinhanh = db.Hinhanhs.Find(id);
-            if (hinhanh == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hinhanh);
-        }
-
+        
         // POST: Admin/Hinhanhs/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            ViewBag.Deleted = false;
             Hinhanh hinhanh = db.Hinhanhs.Find(id);
             db.Hinhanhs.Remove(hinhanh);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Deleted = true;
+            List<Hinhanh> lstHinhanh = db.Hinhanhs.Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
+
+            return PartialView("Index", lstHinhanh);
         }
 
         protected override void Dispose(bool disposing)
