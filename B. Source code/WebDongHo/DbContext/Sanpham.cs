@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    using System.Web.Mvc;
     [Table("Sanpham")]
     public partial class Sanpham
     {
@@ -23,6 +23,7 @@
         public string Ten { get; set; }
 
         [Required]
+        [AllowHtml]
         [Display(Name = "Mô tả")]
         public string Mota { get; set; }
 
@@ -56,7 +57,7 @@
         [Display(Name = "Nổi bật")]
         public bool IsNoibat { get; set; }
 
-        [Display(Name = "Hiển thị trang chủ")]
+        [Display(Name = "Hiển thị")]
         public bool Hienthi { get; set; }
 
         
