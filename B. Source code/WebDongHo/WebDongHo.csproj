@@ -1237,6 +1237,7 @@
     <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Accounts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Sanphams\Anh.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\imagezoom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1268,6 +1269,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Controllers\ChitietSPController.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
     <Compile Include="Controllers\DangkyController.cs" />
@@ -1292,12 +1295,15 @@
     <Compile Include="DbContext\MyDbContext.cs" />
     <Compile Include="DbContext\Nangluong.cs" />
     <Compile Include="DbContext\Nhanhieu.cs" />
+    <Compile Include="DbContext\AccountDAO.cs" />
     <Compile Include="DbContext\Sanpham.cs" />
     <Compile Include="DbContext\sysdiagram.cs" />
     <Compile Include="DbContext\Tintuc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Models\ChitietSPModel.cs" />
     <Compile Include="Models\DanhsachSPModel.cs" />
     <Compile Include="Models\DanhsachSPRequest.cs" />
@@ -1324,7 +1330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

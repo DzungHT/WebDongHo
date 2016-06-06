@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebDongHo.DbContext;
 
 namespace WebDongHo.Areas.Admin.Controllers
@@ -40,23 +41,57 @@ namespace WebDongHo.Areas.Admin.Controllers
         {
             return View();
         }
+        
 
         // POST: Admin/Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Create([Bind(Include = "AccountID,Username,Password,Hoten,Ngaysinh,Gioitinh,Email,SDT,Diachi,Role,Trangthai")] Account account)
         {
+            //Kiểm tra hợp lệ dữ liệu
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                //kiểm tra tên đăng nhập, email có bị đã tồn tại hay chưa?
+                var checkUserName = db.Accounts.Any(s => s.Username == account.Username);
+                var checkEmail = db.Accounts.Any(s => s.Email == account.Email);
 
-            return View(account);
+                //Các lỗi nếu có trong quá trình đăng ký tài khoản
+                if (checkUserName)
+                {
+                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại, bạn vui lòng nhập tên tài khoản khác!");
+                }
+                if (checkEmail)
+                {
+                    ModelState.AddModelError("", "Email đã có người sử dụng, bạn vui lòng nhập email khác!");
+                }
+                if (checkUserName == true || checkEmail == true)
+                {
+                    //trả về view đăng ký và thông báo các lỗi ở trên
+                    return View("Create");
+                }
+                else
+                {
+                    //Lưu thông tin tài khoản vào CSDL
+                    db.Accounts.Add(account);
+                    db.SaveChanges();
+                    //xác thực tài khoản trong ứng dụng
+                    FormsAuthentication.SetAuthCookie(account.Username, false);
+                    //trả về trang chủ đăng ký thành công
+                    return RedirectToAction("Index");
+
+                }
+            }
+            else
+            {
+                //Trang báo lỗi nhập liệu không hợp lệ!
+                return View(account);
+            }
         }
+
+        
 
         // GET: Admin/Accounts/Edit/5
         public ActionResult Edit(int? id)
