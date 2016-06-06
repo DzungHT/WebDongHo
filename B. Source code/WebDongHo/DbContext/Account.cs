@@ -11,12 +11,13 @@
     {
         public int AccountID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Bạn chưa nhập tên tài khoản")]
         [StringLength(50)]
         [Display(Name ="Tên tài khoản")]
+
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Bạn chưa nhập mật khẩu")]
         [StringLength(50)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
@@ -32,11 +33,13 @@
         public bool? Gioitinh { get; set; }
 
         [StringLength(50)]
+        [EmailAddress(ErrorMessage ="Bạn nhập sai định dạng email")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [StringLength(20)]
+        [StringLength(11, ErrorMessage ="Bạn chỉ nhập tối đa 10 kí tự")]
         [Display(Name = "Số điện thoại")]
+        [Range(0,Int32.MaxValue, ErrorMessage ="Bạn phải nhập số")]
         public string SDT { get; set; }
 
         [StringLength(100)]
