@@ -1,0 +1,103 @@
+﻿@model WebDongHo.DbContext.Account
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section CustomCSS{
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    <style>
+        th {
+            width: 150px;
+            height: 30px;
+        }
+
+        th, td {
+            padding: 5px;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="page-header">
+            <a href="/Admin/Accounts" style="font-size:0.5em;font-weight:normal;font-style:italic;color:#000">Quản lý tài khoản</a>
+            <br />
+            <span>Bạn có chắc chắn muốn xóa thông tin tài khoản này?</span>
+        </h1>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@Model.UrlAvatar" class="img-thumbnail" style="width:100%;" />
+        </div>
+        <div class="col-md-9">
+            <table class="table-hover table-responsive table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Username)</th>
+                    <td>@Html.DisplayFor(model => model.Username)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Hoten)</th>
+                    <td>@Html.DisplayFor(model => model.Hoten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Ngaysinh)</th>
+                    <td>@Html.DisplayFor(model => model.Ngaysinh)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Diachi)</th>
+                    <td>@Html.DisplayFor(model => model.Diachi)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                    <td>@Html.DisplayFor(model => model.Email)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.SDT)</th>
+                    <td>@Html.DisplayFor(model => model.SDT)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Trangthai)</th>
+                    <td class="text-center">
+                        @if (Model.Trangthai==2)
+                        {
+                            <a class="btn btn-circle btn-danger" title="Đã bị khóa" data-toggle="tooltip" data-placement="top">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-circle btn-success" title="Mở khóa" data-toggle="tooltip" data-placement="top">
+                                <i class="fa fa-unlock" aria-hidden="true"></i>
+                            </a>
+                        }
+                    </td>
+                </tr>
+            </table>
+            <div style="margin:10px 0 0 25px;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <a href="/Admin/Accounts" class="btn btn-primary">Trở về danh sách</a>
+                        <input type="submit" value="Xóa" class="btn btn-danger" style="width:100px;" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@section CustomJS{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+}
