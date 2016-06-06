@@ -12,6 +12,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sanpham()
         {
+            Chitietdathangs = new HashSet<Chitietdathang>();
             Hinhanhs = new HashSet<Hinhanh>();
         }
 
@@ -19,12 +20,12 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name ="Tên sản phẩm")]
+        [Display(Name = "Tên sản phẩm")]
         public string Ten { get; set; }
 
         [Required]
         [AllowHtml]
-        [Display(Name ="Mô tả")]
+        [Display(Name = "Mô tả")]
         public string Mota { get; set; }
 
         [Display(Name = "Giá cũ")]
@@ -62,6 +63,9 @@
 
         [Display(Name = "Cho phép hiển thị")]
         public bool Hienthi { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Chitietdathang> Chitietdathangs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hinhanh> Hinhanhs { get; set; }

@@ -13,6 +13,8 @@ namespace WebDongHo.DbContext
         }
 
         public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<Chitietdathang> Chitietdathangs { get; set; }
+        public virtual DbSet<Dathang> Dathangs { get; set; }
         public virtual DbSet<Hinhanh> Hinhanhs { get; set; }
         public virtual DbSet<Loaiday> Loaidays { get; set; }
         public virtual DbSet<LoaiSP> LoaiSPs { get; set; }

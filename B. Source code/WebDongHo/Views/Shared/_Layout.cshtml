@@ -78,10 +78,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="col-md-6 top-header-right">
                     <div class="top-header-right-content">
-                        <a href="/" style="display:inline-block;float:right;">
+                        <a href="/Checkout" style="display:inline-block;float:right;">
                             <img class="pull-right" src="/images/cart-1.png" alt="" />
                             <div id="total_cart" class="pull-right">
-                                <span>0</span>
+                                <span>@WebDongHo.Helper.CartSession.TotalItem</span>
                             </div>
                             <br />
                             <div class="pull-right">Sản phẩm</div>
@@ -160,5 +160,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
     <!--footer-end-->
+
+    <!--Cart script-->
+
+    <script src="~/Scripts/Cart.js"></script>
 </body>
 </html>

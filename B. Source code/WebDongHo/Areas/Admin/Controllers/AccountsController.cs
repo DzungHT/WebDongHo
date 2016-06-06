@@ -66,6 +66,7 @@ namespace WebDongHo.Areas.Admin.Controllers
                 if (checkEmail)
                 {
                     ModelState.AddModelError("", "Email đã có người sử dụng, bạn vui lòng nhập email khác!");
+
                 }
                 if (checkUserName == true || checkEmail == true)
                 {

@@ -1,0 +1,38 @@
+﻿@model bool
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Đặt hàng</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<div class="container text-center">
+    @if (Model)
+    {
+        <div class="bg-success" style="display:inline-block;padding:50px;margin:100px auto;">
+            <h1>Bạn đã đặt hàng hàng thành công!</h1>
+            <p>Đơn đặt hàng của bạn sẽ được chúng tôi tiếp nhận và chủ động lien lạc lại với bạn sau</p>
+        </div>
+
+    }
+    else
+    {
+        <div class="bg-danger" style="display:inline-block;padding:50px;margin:100px auto;">
+            <h1>Có lỗi xảy ra!</h1>
+            <p>
+                Chúng tôi rất tiếc về điều này! Hãy thử lại sau ít phút.
+            </p>
+        </div>
+    }
+</div>
+
