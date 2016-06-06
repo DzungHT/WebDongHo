@@ -19,7 +19,8 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Tên loại SP")]
+
+        [Display(Name = "Tên loại sản phẩm")]
         public string Ten { get; set; }
 
         [Display(Name = "Thứ tự hiển thị")]
@@ -28,9 +29,7 @@
         [Display(Name = "Hiển thị")]
         public bool Hienthi { get; set; }
 
-        [Display(Name = "Nổi bật")]
-        public bool IsDel { get; set; }
-
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sanpham> Sanphams { get; set; }
     }

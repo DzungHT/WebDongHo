@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-lg-12">
         <p style="margin-top:20px">
-            <a href="/Admin/Sanphams/Create" class="btn btn-primary">
+            <a href="/Admin/Nhanhieux/Create" class="btn btn-primary">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i> Tạo mới
             </a>
         </p>
@@ -40,9 +40,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Hienthi)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IsDel)
-                    </th>
+                    
                 </tr>
             </thead>
 
@@ -51,13 +49,13 @@
                 {
                     <tr>
                         <td>
-                            <a href="/Admin/Sanphams/Details/@item.NhanhieuID" class="btn btn-info btn-circle" title="Xem chi tiết" data-toggle="tooltip" data-placement="top">
+                            <a href="/Admin/Nhanhieux/Details/@item.NhanhieuID" class="btn btn-info btn-circle" title="Xem chi tiết" data-toggle="tooltip" data-placement="top">
                                 <i class="fa fa-info" aria-hidden="true"></i>
                             </a>
-                            <a href="/Admin/Sanphams/Edit/@item.NhanhieuID" class="btn btn-warning btn-circle" title="Sửa nội dung" data-toggle="tooltip" data-placement="top">
+                            <a href="/Admin/Nhanhieux/Edit/@item.NhanhieuID" class="btn btn-warning btn-circle" title="Sửa nội dung" data-toggle="tooltip" data-placement="top">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <a href="/Admin/Sanphams/Delete/@item.NhanhieuID" class="btn btn-danger btn-circle" title="Xóa" data-toggle="tooltip" data-placement="top">
+                            <a href="/Admin/Nhanhieux/Delete/@item.NhanhieuID" class="btn btn-danger btn-circle" title="Xóa" data-toggle="tooltip" data-placement="top">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
@@ -71,9 +69,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Hienthi)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IsDel)
-                        </td>
+                        
                     </tr>
                 }
             </tbody>

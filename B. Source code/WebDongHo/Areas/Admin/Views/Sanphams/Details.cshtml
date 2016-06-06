@@ -5,120 +5,108 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@section CustomCSS{
+    <link href="~/Content/dataTables.bootstrap.css" rel="stylesheet" />
+    <style>
+        th {
+            width: 150px;
+            height: 30px;
+        }
 
-<div>
-    <h4>Sanpham</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Loaiday.Ten)
-        </dt>
+        th, td {
+            padding: 5px;
+        }
+    </style>
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.Loaiday.Ten)
-        </dd>
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="page-header">
+            <a href="/Admin/Sanphams" style="font-size:0.5em;font-weight:normal;font-style:italic">Quản lý sản phẩm</a>
+            <br />
+            <span>Thông tin sản phẩm</span>
+        </h1>
+    </div>
+    <!-- /.row -->
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiSP.Ten)
-        </dt>
+    <div class="row">
+        <div id="list-image" style="display:block;margin-top: 25px;">
+            @{
+                Html.RenderAction("Index", "Hinhanhs", new { id = Model.SanphamID });
+            }
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiSP.Ten)
-        </dd>
+        <div class="col-md-9">
+            <table class="table-hover table-responsive table-striped">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Ten)</th>
+                    <td>@Html.DisplayFor(model => model.Ten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Nhanhieu.Ten)</th>
+                    <td>@Html.DisplayFor(model => model.Nhanhieu.Ten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Loaiday.Ten)</th>
+                    <td>@Html.DisplayFor(model => model.Loaiday.Ten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Loaivo.Ten)</th>
+                    <td>@Html.DisplayFor(model => model.Loaivo.Ten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Nangluong.Ten)</th>
+                    <td>@Html.DisplayFor(model => model.Nangluong.Ten)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Giaban)</th>
+                    <td>@Html.DisplayFor(model => model.Giaban)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Giagoc)</th>
+                    <td>@Html.DisplayFor(model => model.Giagoc)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Khuyenmai)</th>
+                    <td>@Html.DisplayFor(model => model.Khuyenmai)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Soluong)</th>
+                    <td>@Html.DisplayFor(model => model.Soluong)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Hienthi)</th>
+                    <td>@Html.DisplayFor(model => model.Hienthi)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.HienthiTrangChu)</th>
+                    <td>@Html.DisplayFor(model => model.HienthiTrangChu)</td>
+                </tr>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.IsNoibat)</th>
+                    <td>@Html.DisplayFor(model => model.IsNoibat)</td>
+                </tr>
+                
+            </table>
+            <div style="margin:10px 0 0 25px;">
+                <a href="/Admin/Sanphams" class="btn btn-primary" title="Trở về danh sách nhân viên" data-toggle="tooltip" data-placement="bottom">
+                    Trở về danh sách
+                </a>
+                <a href="/Admin/Sanphams/Edit/@Model.SanphamID" class="btn btn-warning" title="Chỉnh sửa thông tin" data-toggle="tooltip" data-placement="bottom">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;
+                    Chỉnh sửa
+                </a>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Loaivo.Ten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Loaivo.Ten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nangluong.Ten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nangluong.Ten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Nhanhieu.Ten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nhanhieu.Ten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ten)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ten)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mota)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mota)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Giagoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Giagoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Giaban)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Giaban)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Soluong)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Soluong)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Khuyenmai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Khuyenmai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsNoibat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsNoibat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Hienthi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hienthi)
-        </dd>
-
-        
-    </dl>
+    </div>
+    <!-- /.row -->
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SanphamID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section CustomJS{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+}
