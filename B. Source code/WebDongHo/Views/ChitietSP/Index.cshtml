@@ -114,16 +114,40 @@
                     </div>
                     <div class="col-md-7 single-top-right">
                         <div class="single-para simpleCart_shelfItem">
-                            <h2>@Model.Sanpham.Ten</h2>
+                            <h2 style="font-family:Arial, Helvetica, sans-serif"><b>@Model.Sanpham.Ten</b></h2>
 
                             <h5 class="item_price">Giá: @((Model.Sanpham.Giaban * 1000).ToString("#,#")) VNĐ</h5>
 
                             @Html.Raw(Model.Sanpham.Mota)
-                            <div class="available">
+
+                            <div class="available" style="border-top:1px solid #ddd;margin-top:15px;">
+                                <ul>
+                                    <li>
+                                        Số lượng còn lại: @Model.Sanpham.Soluong
+                                    </li>
+                                    <li class="size-in">
+                                        Số lượng đặt hàng: <input id="soluong" class="form-control" type="number" value="1" style="width:100px;display:inline-block;" min="1" max="@Model.Sanpham.Soluong"/>
+                                        <a href="#" class="add-cart" id="CartItem_@Model.Sanpham.SanphamID">Thêm vào giỏ hàng</a>
+                                    </li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>
+
+                            <script>
+                                $("#soluong").on('change', function () {
+                                    if (this.value < this.min || this.value == '') {
+                                        this.value = this.min;
+                                    }
+                                    if (this.value > this.max) {
+                                        this.value = this.max;
+                                    }
+                                })
+                            </script>
+                            @*<div class="available">
                                 Số lượng đặt hàng: <input id="soluong" class="form-control" type="number" value="1" style="width:100px;display:inline-block;" />
                                 <a href="#" class="add-cart item_add">Thêm vào giỏ hàng</a>
                                 <div class="clearfix"> </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                     <div class="clearfix"> </div>
@@ -157,7 +181,7 @@
                                                 <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
                                                 <h4>
                                                     <span style="display:block;">
-                                                        <a class="item_add" href="#"><i></i></a>&nbsp;
+                                                        <a class="item_add" href="javascript:;" id="CartItem_@s.SanphamID" ><i></i></a>&nbsp;
                                                         <span class="item_price">
                                                             <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
                                                                 @((s.Giaban * 1000).ToString("#,#"))
