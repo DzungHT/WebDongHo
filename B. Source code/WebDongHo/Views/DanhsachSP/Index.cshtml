@@ -1,8 +1,18 @@
-﻿
+﻿@using WebDongHo.Models;
+@model DanhsachSPModel
 @{
     ViewBag.Title = "Danh sách sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .mask img {
+        height: 275px;
+    }
+
+    .product-left {
+        margin-top: 25px;
+    }
+</style>
 
 
 <!--start-breadcrumbs-->
@@ -22,168 +32,145 @@
     <div class="container">
         <div class="prdt-top">
             <div class="col-md-9 prdt-left">
-                <div class="product-one">
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+                <div>
+                    @{
+                        string urlAnhSP = "";
+                        foreach (var s in Model.Sanphams)
+                        {
+                            if (s.Hinhanhs.Count == 0)
+                            {
+                                urlAnhSP = "/images/nophoto.jpg";
+                            }
+                            else
+                            {
+                                urlAnhSP = s.Hinhanhs.ToList()[0].Url;
+                            }
+                            <div class="col-md-4 product-left">
+                                <div class="product-main">
+                                    <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
+                                    <div class="product-bottom">
+                                        <p style="height:17px; overflow:hidden; text-overflow:ellipsis" title="@s.Nhanhieu.Ten">@s.Nhanhieu.Ten</p>
+                                        <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
+                                        <br />
+                                        <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
+                                        <h4>
+                                            <span style="display:block;">
+                                                <a class="item_add" href="#"><i></i></a>&nbsp;
+                                                <span class="item_price">
+                                                    <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
+                                                        @((s.Giaban * 1000).ToString("#,#"))
+                                                    </span>
+                                                    VNĐ
+                                                </span>
+                                            </span>
+
+                                            <span class="item_price" style="margin-left:35px;display:block">
+                                                <span style="text-decoration:line-through">
+                                                    @((s.Giagoc * 1000).ToString("#,#"))
+                                                </span>
+                                                VNĐ
+                                            </span>
+                                        </h4>
+                                    </div>
+                                    <div class="srch">
+                                        @if (s.Khuyenmai > 0)
+                                        {
+                                            <span>-@(s.Khuyenmai)%</span>
+                                        }
+                                    </div>
+                                </div>
                             </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                            </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-3.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                            </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
+                        }
+                    }
                 </div>
-                <div class="product-one">
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-4.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                            </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-5.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                            </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 product-left p-left">
-                        <div class="product-main simpleCart_shelfItem">
-                            <a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-6.png" alt="" /></a>
-                            <div class="product-bottom">
-                                <h3>Smart Watches</h3>
-                                <p>Explore Now</p>
-                                <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-                            </div>
-                            <div class="srch srch1">
-                                <span>-50%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+
             </div>
             <div class="col-md-3 prdt-right">
                 <div class="w_sidebar">
                     <section class="sky-form">
-                        <h4>Catogories</h4>
+                        <h4>Nhãn hiệu</h4>
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
+                                <label class="checkbox"><input type="checkbox" name="NhanHieu" value="0" checked=""><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>
+                                @{
+                                    if (Model.Nhanhieux.Count > 0)
+                                    {
+                                        foreach (var item in Model.Nhanhieux)
+                                        {
+                                            <label class="checkbox"><input type="checkbox" name="NhanHieu" value="@item.NhanhieuID"><i></i>@item.Ten</label>
+                                        }
+                                    }
+                                }
                             </div>
                         </div>
                     </section>
                     <section class="sky-form">
-                        <h4>Brand</h4>
+                        <h4>Khoảng giá</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-                            </div>
-                            <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>shree</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="0" checked><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="1"><i></i>Giá dưới 5 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="2"><i></i>Giá từ 5 - 10 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="3"><i></i>Giá từ 10 - 20 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="4"><i></i>Giá từ 20 - 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="5"><i></i>Giá trên 50 triệu</label>
                             </div>
                         </div>
                     </section>
                     <section class="sky-form">
-                        <h4>Colour</h4>
-                        <ul class="w_nav2">
-                            <li><a class="color1" href="#"></a></li>
-                            <li><a class="color2" href="#"></a></li>
-                            <li><a class="color3" href="#"></a></li>
-                            <li><a class="color4" href="#"></a></li>
-                            <li><a class="color5" href="#"></a></li>
-                            <li><a class="color6" href="#"></a></li>
-                            <li><a class="color7" href="#"></a></li>
-                            <li><a class="color8" href="#"></a></li>
-                            <li><a class="color9" href="#"></a></li>
-                            <li><a class="color10" href="#"></a></li>
-                            <li><a class="color12" href="#"></a></li>
-                            <li><a class="color13" href="#"></a></li>
-                            <li><a class="color14" href="#"></a></li>
-                            <li><a class="color15" href="#"></a></li>
-                            <li><a class="color5" href="#"></a></li>
-                            <li><a class="color6" href="#"></a></li>
-                            <li><a class="color7" href="#"></a></li>
-                            <li><a class="color8" href="#"></a></li>
-                            <li><a class="color9" href="#"></a></li>
-                            <li><a class="color10" href="#"></a></li>
-                        </ul>
-                    </section>
-                    <section class="sky-form">
-                        <h4>discount</h4>
+                        <h4>Năng lượng sử dụng</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % and above</label>
-                                <label class="radio"><input type="radio" name="radio"><i></i>50 % and above</label>
-                                <label class="radio"><input type="radio" name="radio"><i></i>40 % and above</label>
+                                <label class="checkbox"><input type="checkbox" name="NangLuong" value="0" checked=""><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
-                                <label class="radio"><input type="radio" name="radio"><i></i>30 % and above</label>
-                                <label class="radio"><input type="radio" name="radio"><i></i>20 % and above</label>
-                                <label class="radio"><input type="radio" name="radio"><i></i>10 % and above</label>
+                                @if (Model.Nangluongs.Count > 0)
+                                {
+                                    foreach (var item in Model.Nangluongs)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="NangLuong" value="@item.NangluongID"><i></i>@item.Ten</label>
+                                    }
+                                }
                             </div>
                         </div>
                     </section>
+                    <section class="sky-form">
+                        <h4>Loại dây sử dụng</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="LoaiDay" value="0" checked=""><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @if (Model.Loaidays.Count > 0)
+                                {
+                                    foreach (var item in Model.Loaidays)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="LoaiDay" value="@item.LoaidayID"><i></i>@item.Ten</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sky-form">
+                        <h4>Loại vỏ sử dụng</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="LoaiVo" value="0" checked=""><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @if (Model.Loaivoes.Count > 0)
+                                {
+                                    foreach (var item in Model.Loaivoes)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="LoaiVo" value="@item.LoaivoID"><i></i>@item.Ten</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                    
                 </div>
             </div>
             <div class="clearfix"></div>

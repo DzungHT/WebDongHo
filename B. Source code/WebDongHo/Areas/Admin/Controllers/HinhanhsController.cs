@@ -17,7 +17,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // GET: Admin/Hinhanhs
         public ActionResult Index(int id)
         {
-            var hinhanhs = db.Hinhanhs.Where(x => x.SanphamID == id).ToList();
+            var hinhanhs = db.Hinhanhs.Include(x => x.Sanpham).Where(x => x.SanphamID == id).ToList();
             return PartialView(hinhanhs.ToList());
         }
 
@@ -31,7 +31,7 @@ namespace WebDongHo.Areas.Admin.Controllers
                 db.SaveChanges();
                 ViewBag.IsSuccess = true;
             }
-            List<Hinhanh> lstHinhanh = db.Hinhanhs.Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
+            List<Hinhanh> lstHinhanh = db.Hinhanhs.Include(x => x.Sanpham).Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
             return PartialView("Index", lstHinhanh);
         }
         
@@ -44,8 +44,7 @@ namespace WebDongHo.Areas.Admin.Controllers
             db.Hinhanhs.Remove(hinhanh);
             db.SaveChanges();
             ViewBag.Deleted = true;
-            List<Hinhanh> lstHinhanh = db.Hinhanhs.Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
-
+            List<Hinhanh> lstHinhanh = db.Hinhanhs.Include(x => x.Sanpham).Where(x => x.SanphamID == hinhanh.SanphamID).ToList();
             return PartialView("Index", lstHinhanh);
         }
 

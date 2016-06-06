@@ -1,0 +1,280 @@
+﻿@using WebDongHo.Models
+@model ChitietSPModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/flexslider.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.flexslider.js"></script>
+<script src="~/Scripts/imagezoom.js"></script>
+<style>
+    .flex-viewport {
+        border: 1px solid #ddd;
+    }
+
+    .flex-control-nav.flex-control-thumbs li {
+        height: 100px;
+        border: 1px solid #ddd;
+        margin: 3px 3px 0 0;
+    }
+
+        .flex-control-nav.flex-control-thumbs li img {
+            height: 95px;
+            width: auto;
+            margin: auto;
+        }
+        .item_price{
+            color:#f00 !important;
+        }
+    .mask img {
+        height: 275px;
+    }
+    .product-left{
+        margin-top:0px;
+    }
+
+</style>
+
+<script type="text/javascript">
+	$(function() {
+
+	    var menu_ul = $('.menu_drop > li > ul'),
+	           menu_a  = $('.menu_drop > li > a');
+
+	    menu_ul.hide();
+
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+
+	});
+</script>
+
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="/">Trang chủ</a></li>
+                <li class="active">Chi tiết sản phẩm</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--start-single-->
+<div class="single contact">
+    <div class="container">
+        <div class="single-main">
+            <div class="col-md-9 single-main-left">
+                <div class="sngl-top">
+                    <div class="col-md-5 single-top-left">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                @{
+                                    if (Model.Sanpham.Hinhanhs != null && Model.Sanpham.Hinhanhs.Count > 0)
+                                    {
+                                        foreach (var item in Model.Sanpham.Hinhanhs)
+                                        {
+                                            <li data-thumb="@item.Url">
+                                                <div class="thumb-image"> <img src="@item.Url" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li data-thumb="/images/nophoto.jpg">
+                                            <div class="thumb-image"> <img src="/images/nophoto.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                        <script>
+                            // Can also be used with $(document).ready()
+                            $(window).load(function () {
+                                $('.flexslider').flexslider({
+                                    animation: "slide",
+                                    controlNav: "thumbnails",
+                                    directionNav: false
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="col-md-7 single-top-right">
+                        <div class="single-para simpleCart_shelfItem">
+                            <h2>@Model.Sanpham.Ten</h2>
+
+                            <h5 class="item_price">Giá: @((Model.Sanpham.Giaban * 1000).ToString("#,#")) VNĐ</h5>
+
+                            @Html.Raw(Model.Sanpham.Mota)
+                            <div class="available">
+                                Số lượng đặt hàng: <input id="soluong" class="form-control" type="number" value="1" style="width:100px;display:inline-block;" />
+                                <a href="#" class="add-cart item_add">Thêm vào giỏ hàng</a>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="latestproducts">
+                    <div class="page-header">
+                        <h4><b>Sản phẩm giảm giá mạnh</b></h4>
+                    </div>
+                    <div class="product-one">
+                        @{
+                            string urlAnhSP = "";
+                            foreach (var s in Model.Noibats)
+                            {
+                                if (s.Hinhanhs.Count == 0)
+                                {
+                                    urlAnhSP = "/images/nophoto.jpg";
+                                }
+                                else
+                                {
+                                    urlAnhSP = s.Hinhanhs.ToList()[0].Url;
+                                }
+                                <div class="col-md-4 product-left">
+                                    <div class="product-main">
+                                        <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
+                                        <div class="product-bottom">
+                                            <p>@s.Nhanhieu.Ten</p>
+                                            <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
+                                            <br />
+                                            <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
+                                            <h4>
+                                                <span style="display:block;">
+                                                    <a class="item_add" href="#"><i></i></a>&nbsp;
+                                                    <span class="item_price">
+                                                        <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
+                                                            @((s.Giaban * 1000).ToString("#,#"))
+                                                        </span>
+                                                        VNĐ
+                                                    </span>
+                                                </span>
+
+                                                <span class="item_price" style="margin-left:35px;display:block">
+                                                    <span style="text-decoration:line-through">
+                                                        @((s.Giagoc * 1000).ToString("#,#"))
+                                                    </span>
+                                                    VNĐ
+                                                </span>
+                                            </h4>
+                                        </div>
+                                        <div class="srch">
+                                            @if (s.Khuyenmai > 0)
+                                            {
+                                                <span>-@(s.Khuyenmai)%</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 prdt-right">
+                <div class="w_sidebar">
+                    <section class="sky-form">
+                        <h4>Nhãn hiệu</h4>
+                        <div class="row1 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="NhanHieu"><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @{
+                                    if (Model.Nhanhieux.Count > 0)
+                                    {
+                                        foreach (var item in Model.Nhanhieux)
+                                        {
+                                            <label class="checkbox"><input type="checkbox" name="NhanHieu" @(Model.Sanpham.NhanhieuID == item.NhanhieuID ? "checked":"")><i></i>@item.Ten</label>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sky-form">
+                        <h4>Khoảng giá</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="radio"><input type="radio" name="KhoangGia" value="1" @(Model.Sanpham.Giaban < 5000 ? "checked":"")><i></i>Giá dưới 5 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="2" @(Model.Sanpham.Giaban >= 5000 && Model.Sanpham.Giaban <= 10000 ? "checked":"")><i></i>Giá từ 5 - 10 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="3" @(Model.Sanpham.Giaban >= 10000 && Model.Sanpham.Giaban <= 20000 ? "checked":"")><i></i>Giá từ 10 - 20 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="4" @(Model.Sanpham.Giaban >= 20000 && Model.Sanpham.Giaban <= 50000 ? "checked":"")><i></i>Giá từ 20 - 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="5" @(Model.Sanpham.Giaban > 50000 ? "checked":"")><i></i>Giá trên 50 triệu</label>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sky-form">
+                        <h4>Năng lượng sử dụng</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="NangLuong"><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @if (Model.Nangluongs.Count > 0)
+                                {
+                                    foreach (var item in Model.Nangluongs)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="NangLuong" value="@item.NangluongID" @(Model.Sanpham.NangluongID == item.NangluongID ? "checked":"")><i></i>@item.Ten</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sky-form">
+                        <h4>Loại dây sử dụng</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="LoaiDay"><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @if (Model.Loaidays.Count > 0)
+                                {
+                                    foreach (var item in Model.Loaidays)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="LoaiDay" value="@item.LoaidayID" @(Model.Sanpham.LoaidayID == item.LoaidayID ? "checked":"")><i></i>@item.Ten</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                    <section class="sky-form">
+                        <h4>Loại vỏ sử dụng</h4>
+                        <div class="row1 row2 scroll-pane">
+                            <div class="col col-4">
+                                <label class="checkbox"><input type="checkbox" name="LoaiVo"><i></i>Tất cả</label>
+                            </div>
+                            <div class="col col-4">
+                                @if (Model.Loaivoes.Count > 0)
+                                {
+                                    foreach (var item in Model.Loaivoes)
+                                    {
+                                        <label class="checkbox"><input type="checkbox" name="LoaiVo" value="@item.LoaivoID" @(Model.Sanpham.LoaivoID == item.LoaivoID ? "checked":"")><i></i>@item.Ten</label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--end-single-->
