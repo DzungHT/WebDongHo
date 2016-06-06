@@ -21,7 +21,7 @@
     {
         <div class="bg-success" style="display:inline-block;padding:50px;margin:100px auto;">
             <h1>Bạn đã đặt hàng hàng thành công!</h1>
-            <p>Đơn đặt hàng của bạn sẽ được chúng tôi tiếp nhận và chủ động lien lạc lại với bạn sau</p>
+            <p>@ViewBag.MessageError</p>
         </div>
 
     }
@@ -29,9 +29,7 @@
     {
         <div class="bg-danger" style="display:inline-block;padding:50px;margin:100px auto;">
             <h1>Có lỗi xảy ra!</h1>
-            <p>
-                Chúng tôi rất tiếc về điều này! Hãy thử lại sau ít phút.
-            </p>
+            <p>@ViewBag.MessageError</p>
         </div>
     }
 </div>

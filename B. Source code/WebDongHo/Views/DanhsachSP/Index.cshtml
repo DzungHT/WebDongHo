@@ -13,7 +13,9 @@
         margin-top: 25px;
     }
 </style>
-
+@{
+    DanhsachSPRequest rq = (DanhsachSPRequest)ViewData["DanhsachSPRequest"];
+}
 
 <!--start-breadcrumbs-->
 <div class="breadcrumbs">
@@ -45,53 +47,54 @@
                             {
                                 urlAnhSP = s.Hinhanhs.ToList()[0].Url;
                             }
-                            <div class="col-md-4 product-left">
-                                <div class="product-main">
-                                    <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
-                                    <div class="product-bottom">
-                                        <p style="height:17px; overflow:hidden; text-overflow:ellipsis" title="@s.Nhanhieu.Ten">@s.Nhanhieu.Ten</p>
-                                        <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
-                                        <br />
-                                        <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
-                                        <h4>
-                                            <span style="display:block;">
-                                                <a class="item_add" href="javascript:;" id="CartItem_@s.SanphamID"><i></i></a>&nbsp;
-                                                <span class="item_price">
-                                                    <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
-                                                        @((s.Giaban * 1000).ToString("#,#"))
-                                                    </span>
-                                                    VNĐ
-                                                </span>
+                    <div class="col-md-4 product-left">
+                        <div class="product-main">
+                            <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
+                            <div class="product-bottom">
+                                <p style="height:17px; overflow:hidden; text-overflow:ellipsis" title="@s.Nhanhieu.Ten">@s.Nhanhieu.Ten</p>
+                                <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
+                                <br />
+                                <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
+                                <h4>
+                                    <span style="display:block;">
+                                        <a class="item_add" href="javascript:;" id="CartItem_@s.SanphamID"><i></i></a>&nbsp;
+                                        <span class="item_price">
+                                            <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
+                                                @((s.Giaban * 1000).ToString("#,#"))
                                             </span>
+                                            VNĐ
+                                        </span>
+                                    </span>
 
-                                            <span class="item_price" style="margin-left:35px;display:block">
-                                                <span style="text-decoration:line-through">
-                                                    @((s.Giagoc * 1000).ToString("#,#"))
-                                                </span>
-                                                VNĐ
-                                            </span>
-                                        </h4>
-                                    </div>
-                                    <div class="srch">
-                                        @if (s.Khuyenmai > 0)
-                                        {
-                                            <span>-@(s.Khuyenmai)%</span>
-                                        }
-                                    </div>
-                                </div>
+                                    <span class="item_price" style="margin-left:35px;display:block">
+                                        <span style="text-decoration:line-through">
+                                            @((s.Giagoc * 1000).ToString("#,#"))
+                                        </span>
+                                        VNĐ
+                                    </span>
+                                </h4>
                             </div>
+                            <div class="srch">
+                                @if (s.Khuyenmai > 0)
+                                        {
+                                        <span>-@(s.Khuyenmai)%</span>
+                                        }
+                            </div>
+                        </div>
+                    </div>
                         }
                     }
                 </div>
 
             </div>
             <div class="col-md-3 prdt-right">
+               
                 <div class="w_sidebar">
                     <section class="sky-form">
                         <h4>Nhãn hiệu</h4>
                         <div class="row1 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="NhanHieu" value="0" checked=""><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="NhanHieu" value="0" checked=""><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
                                 @{
@@ -99,7 +102,7 @@
                                     {
                                         foreach (var item in Model.Nhanhieux)
                                         {
-                                            <label class="checkbox"><input type="checkbox" name="NhanHieu" value="@item.NhanhieuID"><i></i>@item.Ten</label>
+                                <label class="radio"><input type="radio" name="NhanHieu" value="@item.NhanhieuID" @(rq.Nhid == item.NhanhieuID?"checked":"")><i></i>@item.Ten</label>
                                         }
                                     }
                                 }
@@ -110,12 +113,12 @@
                         <h4>Khoảng giá</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="radio"><input type="radio" name="KhoangGia" value="0" checked><i></i>Tất cả</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="1"><i></i>Giá dưới 5 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="2"><i></i>Giá từ 5 - 10 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="3"><i></i>Giá từ 10 - 20 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="4"><i></i>Giá từ 20 - 50 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="5"><i></i>Giá trên 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="0" @(rq.Kg == 0 ? "checked" : "")><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="1" @(rq.Kg == 1 ? "checked" : "")><i></i>Giá dưới 5 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="2" @(rq.Kg == 2 ? "checked" : "")><i></i>Giá từ 5 - 10 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="3" @(rq.Kg == 3 ? "checked" : "")><i></i>Giá từ 10 - 20 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="4" @(rq.Kg == 4 ? "checked" : "")><i></i>Giá từ 20 - 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="5" @(rq.Kg == 5 ? "checked" : "")><i></i>Giá trên 50 triệu</label>
                             </div>
                         </div>
                     </section>
@@ -123,14 +126,14 @@
                         <h4>Năng lượng sử dụng</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="NangLuong" value="0" checked=""><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="NangLuong" value="0"><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
                                 @if (Model.Nangluongs.Count > 0)
                                 {
                                     foreach (var item in Model.Nangluongs)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="NangLuong" value="@item.NangluongID"><i></i>@item.Ten</label>
+                                <label class="radio"><input type="radio" name="NangLuong" value="@item.NangluongID" @(rq.Nlid == item.NangluongID ? "checked":"") /><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>
@@ -140,14 +143,14 @@
                         <h4>Loại dây sử dụng</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="LoaiDay" value="0" checked=""><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="LoaiDay" value="0"><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
                                 @if (Model.Loaidays.Count > 0)
                                 {
                                     foreach (var item in Model.Loaidays)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="LoaiDay" value="@item.LoaidayID"><i></i>@item.Ten</label>
+                                <label class="radio"><input type="radio" name="LoaiDay" value="@item.LoaidayID" @(rq.Ldid == item.LoaidayID ? "checked":"")><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>
@@ -157,20 +160,20 @@
                         <h4>Loại vỏ sử dụng</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="checkbox"><input type="checkbox" name="LoaiVo" value="0" checked=""><i></i>Tất cả</label>
+                                <label class="radio"><input type="radio" name="LoaiVo" value="0"><i></i>Tất cả</label>
                             </div>
                             <div class="col col-4">
                                 @if (Model.Loaivoes.Count > 0)
                                 {
                                     foreach (var item in Model.Loaivoes)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="LoaiVo" value="@item.LoaivoID"><i></i>@item.Ten</label>
+                                <label class="radio"><input type="radio" name="LoaiVo" value="@item.LoaivoID" @(rq.Lvid == item.LoaivoID ? "checked":"")><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>
                         </div>
                     </section>
-                    
+
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -178,3 +181,29 @@
     </div>
 </div>
 <!--product-end-->
+
+<script>
+    $('.prdt-right input[type=radio]').on('change', function () {
+        var Lspid = Nhid = Nlid = Ldid = Lvid = Kg = 0;
+        $('.prdt-right input[type=radio]:checked').each(function () {
+            switch (this.name) {
+                case 'NhanHieu':
+                    Nhid = this.value;
+                    break;
+                case 'KhoangGia':
+                    Kg = this.value;
+                    break;
+                case 'NangLuong':
+                    Nlid = this.value;
+                    break;
+                case 'LoaiDay':
+                    Ldid = this.value;
+                    break;
+                case 'LoaiVo':
+                    Lvid = this.value;
+                    break;
+            }
+        });
+        window.location.href = '/DanhsachSP/Index?Lspid=@(rq.Lspid.ToString())&Nhid=' + Nhid + '&Kg=' + Kg + '&Nlid=' + Nlid + '&Ldid=' + Ldid + '&Lvid=' + Lvid;
+    });
+</script>

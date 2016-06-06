@@ -1660,7 +1660,7 @@
     <Content Include="Views\DanhsachSP\Index.cshtml" />
     <Content Include="Views\ChitietSP\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
-    <Content Include="Views\Checkout\Messages.cshtml" />
+    <Content Include="Views\Shared\Messages.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

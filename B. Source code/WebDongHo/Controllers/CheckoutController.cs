@@ -61,6 +61,11 @@ namespace WebDongHo.Controllers
             {
                 db.SaveChanges();
                 CartSession.Session.Clear();
+                ViewBag.MessageError = "Đơn đặt hàng của bạn sẽ được chúng tôi tiếp nhận và chủ động lien lạc lại với bạn sau.";
+            }
+            else
+            {
+                ViewBag.MessageError = "Chúng tôi rất tiếc về điều này!Hãy thử lại sau ít phút.";
             }
             return View("Messages",ok);
         }

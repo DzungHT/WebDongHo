@@ -81,6 +81,7 @@ namespace WebDongHo.Controllers
             data.Loaivoes = db.Loaivoes.Where(x => x.Hienthi).ToList();
             data.Nangluongs = db.Nangluongs.Where(x => x.Hienthi).ToList();
             data.Nhanhieux = db.Nhanhieux.Where(x => x.Hienthi).ToList();
+            ViewData["DanhsachSPRequest"] = parm;
             return View(data);
         }
     }

@@ -9,7 +9,7 @@
     <div class="container">
         <div class="breadcrumbs-main">
             <ol class="breadcrumb">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Trang chủ</a></li>
                 <li class="active">Đăng ký</li>
             </ol>
         </div>
@@ -22,27 +22,139 @@
         <div class="register-top heading">
             <h2>Đăng ký</h2>
         </div>
-        <div class="register-main">
-            <div class="col-md-6 account-left">
-                <input placeholder="First name" type="text" tabindex="1" required>
-                <input placeholder="Last name" type="text" tabindex="2" required>
-                <input placeholder="Email address" type="text" tabindex="3" required>
-                <input placeholder="Mobile" type="text" tabindex="3" required>
-                <ul>
-                    <li><label class="radio left"><input type="radio" name="radio" checked=""><i></i>Male</label></li>
-                    <li><label class="radio"><input type="radio" name="radio"><i></i>Female</label></li>
-                    <div class="clearfix"></div>
-                </ul>
+        <form id="form" method="post">
+            <div class="register-main">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" name="Username" placeholder="Tên tài khoản" tabindex="1" type="text" required />
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="Password" placeholder="Mật khẩu" type="password" tabindex="2" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="RePassword" placeholder="Xác nhận mật khẩu" type="password" tabindex="3" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Họ tên" name="Hoten" type="text" tabindex="4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Địa chỉ" name="Diachi" type="text" tabindex="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email" name="Email" type="email" tabindex="6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Số điện thoại" name="SDT" type="text" tabindex="7" required>
+                    </div>
+
+                    <div class="radio col-md-3">
+                        <label>
+                            <input type="radio" name="Gioitinh" value="true" tabindex="8" checked> Nam
+                        </label>
+                    </div>
+                    <div class="radio col-md-3" style="margin-top:0">
+                        <label>
+                            <input type="radio" name="Gioitinh" value="false" tabindex="9"> Nữ
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 account-left">
-                <input placeholder="Password" type="password" tabindex="4" required>
-                <input placeholder="Retype password" type="password" tabindex="4" required>
+
+            <div class="address submit">
+                <input type="submit" value="Submit">
             </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="address submit">
-            <input type="submit" value="Submit">
-        </div>
+        </form>
+
     </div>
 </div>
 <!--register-end-->
+<script src="~/bower_components/jquery-validation-1.15.0/dist/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        jQuery.extend(jQuery.validator.messages, {
+            required: "Bắt buộc phải điền.",
+            remote: "Please fix this field.",
+            email: "Hãy điền đúng định dạng email.",
+            url: "Please enter a valid URL.",
+            date: "Please enter a valid date.",
+            dateISO: "Please enter a valid date (ISO).",
+            number: "Please enter a valid number.",
+            digits: "Please enter only digits.",
+            creditcard: "Please enter a valid credit card number.",
+            equalTo: "Mật khẩu không khớp.",
+            accept: "Please enter a value with a valid extension.",
+            maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+            minlength: jQuery.validator.format("Please enter at least {0} characters."),
+            rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+            range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+            max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
+            min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
+        });
+
+        $.validator.setDefaults({
+            highlight: function (element) {
+                $(element).closest('.form-group').addClass('has-error');
+            },
+            unhighlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        $('#form').validate({
+            rules: {
+                Email: {
+                    required: true,
+                    email: true
+                },
+                RePassword: {
+                    equalTo: '[name="Password"]'
+                },
+                Hoten: {
+                    required: true,
+                    maxlength: 50
+                },
+                Diachi: {
+                    required: true,
+                    maxlength: 150
+                },
+                SDT: {
+                    required: true,
+                    number: true,
+                    maxlength: 11,
+                    minlength: 10
+                }
+            },
+            messages: {
+                Hoten: {
+                    required: "Hãy nhập họ tên của bạn.",
+                    maxlength: "Tối đa 50 kí tự"
+                },
+                Diachi: {
+                    required: "Hãy nhập địa chỉ bạn đang ở.",
+                    maxlength: "Tối đa 150 kí tự"
+                },
+                SDT: {
+                    required: 'Hãy cung cấp số điện thoại để chúng tôi có thể liên lạc lại với bạn',
+                    number: 'Số điện thoại chỉ có thể chứa các ký tự số.',
+                    maxlength: 'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số',
+                    minlength: 'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số'
+                }
+            }
+        });
+    });
+</script>
