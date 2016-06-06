@@ -19,14 +19,12 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Tên Năng lượng")]
+        [Display(Name = "Tên năng lượng")]
         public string Ten { get; set; }
 
         [Display(Name = "Thứ tự hiển thị")]
         public int? Thutu { get; set; }
 
-        [Display(Name = "Nổi bật")]
-        public bool IsDel { get; set; }
 
         [Display(Name = "Hiển thị")]
         public bool Hienthi { get; set; }

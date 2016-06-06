@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Web.Mvc;
+
     [Table("Sanpham")]
     public partial class Sanpham
     {
@@ -19,11 +19,10 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Tên sản phẩm")]
+        [Display(Name = "Tên SP")]
         public string Ten { get; set; }
 
         [Required]
-        [AllowHtml]
         [Display(Name = "Mô tả")]
         public string Mota { get; set; }
 
@@ -62,9 +61,6 @@
 
         [Display(Name = "Hiển thị trang chủ")]
         public bool HienthiTrangChu { get; set; }
-
-        [Display(Name = "Đã xóa")]
-        public bool IsDel { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hinhanh> Hinhanhs { get; set; }

@@ -1219,6 +1219,11 @@
     <Content Include="Areas\Admin\Views\Shared\_NavbarTopLinks.cshtml" />
     <Content Include="bower_components\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="bower_components\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Accounts\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1248,6 +1253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountsController.cs" />
     <Compile Include="Controllers\DangkyController.cs" />
     <Compile Include="Controllers\DangnhapController.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -1261,6 +1267,7 @@
     <Compile Include="Areas\Admin\Controllers\SanphamsController.cs" />
     <Compile Include="Controllers\DanhsachSPController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DbContext\Account.cs" />
     <Compile Include="DbContext\Hinhanh.cs" />
     <Compile Include="DbContext\Loaiday.cs" />
     <Compile Include="DbContext\LoaiSP.cs" />
