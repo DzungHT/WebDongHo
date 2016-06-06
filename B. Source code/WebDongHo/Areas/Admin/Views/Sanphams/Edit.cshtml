@@ -36,38 +36,38 @@
                 @Html.HiddenFor(model => model.SanphamID)
 
 
-                <div class="form-group col-md-6">
-                    @Html.LabelFor(model => model.IsNoibat, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="form-group">
+
                     <div class="col-md-6">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.IsNoibat)
-                            @Html.ValidationMessageFor(model => model.IsNoibat, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.Hienthi, htmlAttributes: new { @class = "control-label col-md-8" })
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.Hienthi)
+                                @Html.ValidationMessageFor(model => model.Hienthi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.IsNoibat, htmlAttributes: new { @class = "control-label col-md-8" })
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsNoibat)
+                                @Html.ValidationMessageFor(model => model.IsNoibat, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.HienthiTrangChu, htmlAttributes: new { @class = "control-label col-md-8" })
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.HienthiTrangChu)
+                                @Html.ValidationMessageFor(model => model.HienthiTrangChu, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group col-md-6">
-                    @Html.LabelFor(model => model.Hienthi, htmlAttributes: new { @class = "control-label col-md-6" })
-                    <div class="col-md-6">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.Hienthi)
-                            @Html.ValidationMessageFor(model => model.Hienthi, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="form-group col-md-6" style="width:550px">
-                    @Html.LabelFor(model => model.HienthiTrangChu, htmlAttributes: new { @class = "control-label col-md-6" })
-                    <div class="col-md-6">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.HienthiTrangChu)
-                            @Html.ValidationMessageFor(model => model.HienthiTrangChu, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.Ten, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
