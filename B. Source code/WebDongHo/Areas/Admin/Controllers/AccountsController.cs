@@ -61,11 +61,12 @@ namespace WebDongHo.Areas.Admin.Controllers
                 //Các lỗi nếu có trong quá trình đăng ký tài khoản
                 if (checkUserName)
                 {
-                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại!");
+                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại, bạn vui lòng nhập tên tài khoản khác!");
                 }
                 if (checkEmail)
                 {
-                    ModelState.AddModelError("", "Email đã có người sử dụng!");
+                    ModelState.AddModelError("", "Email đã có người sử dụng, bạn vui lòng nhập email khác!");
+
                 }
                 if (checkUserName == true || checkEmail == true)
                 {

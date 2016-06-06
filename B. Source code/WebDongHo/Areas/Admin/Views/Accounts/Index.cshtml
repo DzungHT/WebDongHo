@@ -97,22 +97,22 @@
                                             }
                                             @if (item.Role == 2)
                                             {
-                                                <div>Không được quản lý account</div>
+                                                <div>Quản lý sản phẩm</div>
                                             }
-                                            @if (item.Role!=1&&item.Role!=2)
+                                            @if (item.Role==3)
                                             {
                                                 <div>Tài khoản người dùng</div>
                                             }
 
                                         </td>
                                         <td>
-                                            @if (item.Trangthai == 2)
+                                            @if (item.Trangthai==1)
                                             {
                                                 <a class="btn btn-circle btn-danger" title="Đã bị khóa" data-toggle="tooltip" data-placement="top">
                                                     <i class="fa fa-lock" aria-hidden="true"></i>
                                                 </a>
                                             }
-                                            else
+                                            @if (item.Trangthai == 2)
                                             {
                                                 <a class="btn btn-circle btn-success" title="Mở khóa" data-toggle="tooltip" data-placement="top">
                                                     <i class="fa fa-unlock" aria-hidden="true"></i>

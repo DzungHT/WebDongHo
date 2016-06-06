@@ -1633,6 +1633,7 @@
     <Compile Include="DbContext\MyDbContext.cs" />
     <Compile Include="DbContext\Nangluong.cs" />
     <Compile Include="DbContext\Nhanhieu.cs" />
+    <Compile Include="DbContext\AccountDAO.cs" />
     <Compile Include="DbContext\Sanpham.cs" />
     <Compile Include="DbContext\sysdiagram.cs" />
     <Compile Include="DbContext\Tintuc.cs" />

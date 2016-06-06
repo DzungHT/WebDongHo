@@ -47,7 +47,16 @@
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Gioitinh)</th>
-                    <td>@Html.DisplayFor(model => model.Gioitinh)</td>
+                    <td class="text-center">
+                        @if (Model.Gioitinh == true)
+                        {
+                            <div>Nam</div>
+                        }
+                        else
+                        {
+                           <div>Nữ</div>
+                        }
+                    </td>
                 </tr>
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Email)</th>
@@ -60,7 +69,7 @@
                 <tr>
                     <th>@Html.DisplayNameFor(model => model.Trangthai)</th>
                     <td class="text-center">
-                        @if (Model.Trangthai==2)
+                        @if (Model.Trangthai==1)
                         {
                             <a class="btn btn-circle btn-danger" title="Đã bị khóa" data-toggle="tooltip" data-placement="top">
                                 <i class="fa fa-lock" aria-hidden="true"></i>
