@@ -1228,6 +1228,9 @@
     <Content Include="fonts\flexslider-icon.eot" />
     <Content Include="fonts\flexslider-icon.ttf" />
     <Content Include="fonts\flexslider-icon.woff" />
+    <Content Include="fonts\flexslider-icon.eot" />
+    <Content Include="fonts\flexslider-icon.ttf" />
+    <Content Include="fonts\flexslider-icon.woff" />
     <Content Include="Areas\Admin\Views\Accounts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Accounts\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Accounts\Details.cshtml" />
