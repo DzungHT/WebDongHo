@@ -25,8 +25,7 @@
         [Display(Name = "Thứ tự hiển thị")]
         public int? Thutu { get; set; }
 
-        [Display(Name = "Hiển thị")]
-
+        [Display(Name = "Cho phép hiển thị")]
         public bool Hienthi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

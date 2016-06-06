@@ -23,16 +23,18 @@
             width: auto;
             margin: auto;
         }
-        .item_price{
-            color:#f00 !important;
-        }
+
+    .item_price {
+        color: #f00 !important;
+    }
+
     .mask img {
         height: 275px;
     }
-    .product-left{
-        margin-top:0px;
-    }
 
+    .product-left {
+        margin-top: 0px;
+    }
 </style>
 
 <script type="text/javascript">
@@ -127,61 +129,65 @@
                     <div class="clearfix"> </div>
                 </div>
                 <div class="latestproducts">
-                    <div class="page-header">
-                        <h4><b>Sản phẩm giảm giá mạnh</b></h4>
-                    </div>
-                    <div class="product-one">
-                        @{
-                            string urlAnhSP = "";
-                            foreach (var s in Model.Noibats)
-                            {
-                                if (s.Hinhanhs.Count == 0)
+                    @if (Model.Noibats.Count > 0)
+                    {
+                        <div class="page-header">
+                            <h4><b>Sản phẩm đang giảm giá mạnh</b></h4>
+                        </div>
+                        <div class="product-one">
+                            @{
+                                string urlAnhSP = "";
+                                foreach (var s in Model.Noibats)
                                 {
-                                    urlAnhSP = "/images/nophoto.jpg";
-                                }
-                                else
-                                {
-                                    urlAnhSP = s.Hinhanhs.ToList()[0].Url;
-                                }
-                                <div class="col-md-4 product-left">
-                                    <div class="product-main">
-                                        <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
-                                        <div class="product-bottom">
-                                            <p>@s.Nhanhieu.Ten</p>
-                                            <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
-                                            <br />
-                                            <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
-                                            <h4>
-                                                <span style="display:block;">
-                                                    <a class="item_add" href="#"><i></i></a>&nbsp;
-                                                    <span class="item_price">
-                                                        <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
-                                                            @((s.Giaban * 1000).ToString("#,#"))
+                                    if (s.Hinhanhs.Count == 0)
+                                    {
+                                        urlAnhSP = "/images/nophoto.jpg";
+                                    }
+                                    else
+                                    {
+                                        urlAnhSP = s.Hinhanhs.ToList()[0].Url;
+                                    }
+                                    <div class="col-md-4 product-left">
+                                        <div class="product-main">
+                                            <a href="/ChitietSP/Index/@s.SanphamID" class="mask"><img class="img-responsive zoom-img" src="@urlAnhSP" alt="" /></a>
+                                            <div class="product-bottom">
+                                                <p>@s.Nhanhieu.Ten</p>
+                                                <a href="/ChitietSP/Index/@s.SanphamID"><h3 style="font-weight:bold;height:35px; overflow:hidden;" title="@s.Ten">@s.Ten</h3></a>
+                                                <br />
+                                                <a href="/DanhsachSP/Index?Lspid=@s.LoaiSPID" style="color:#999;">@s.LoaiSP.Ten</a>
+                                                <h4>
+                                                    <span style="display:block;">
+                                                        <a class="item_add" href="#"><i></i></a>&nbsp;
+                                                        <span class="item_price">
+                                                            <span style="font-size:1.5em;color:#ff0000;font-weight:bold">
+                                                                @((s.Giaban * 1000).ToString("#,#"))
+                                                            </span>
+                                                            VNĐ
+                                                        </span>
+                                                    </span>
+
+                                                    <span class="item_price" style="margin-left:35px;display:block">
+                                                        <span style="text-decoration:line-through">
+                                                            @((s.Giagoc * 1000).ToString("#,#"))
                                                         </span>
                                                         VNĐ
                                                     </span>
-                                                </span>
-
-                                                <span class="item_price" style="margin-left:35px;display:block">
-                                                    <span style="text-decoration:line-through">
-                                                        @((s.Giagoc * 1000).ToString("#,#"))
-                                                    </span>
-                                                    VNĐ
-                                                </span>
-                                            </h4>
-                                        </div>
-                                        <div class="srch">
-                                            @if (s.Khuyenmai > 0)
-                                            {
-                                                <span>-@(s.Khuyenmai)%</span>
-                                            }
+                                                </h4>
+                                            </div>
+                                            <div class="srch">
+                                                @if (s.Khuyenmai > 0)
+                                                {
+                                                    <span>-@(s.Khuyenmai)%</span>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             }
-                        }
-                        <div class="clearfix"></div>
-                    </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    }
+
                 </div>
             </div>
 
@@ -200,7 +206,7 @@
                                     {
                                         foreach (var item in Model.Nhanhieux)
                                         {
-                                            <label class="checkbox"><input type="checkbox" name="NhanHieu" @(Model.Sanpham.NhanhieuID == item.NhanhieuID ? "checked":"")><i></i>@item.Ten</label>
+                                            <label class="checkbox"><input type="checkbox" name="NhanHieu" @(Model.Sanpham.NhanhieuID == item.NhanhieuID ? "checked" : "")><i></i>@item.Ten</label>
                                         }
                                     }
                                 }
@@ -211,11 +217,11 @@
                         <h4>Khoảng giá</h4>
                         <div class="row1 row2 scroll-pane">
                             <div class="col col-4">
-                                <label class="radio"><input type="radio" name="KhoangGia" value="1" @(Model.Sanpham.Giaban < 5000 ? "checked":"")><i></i>Giá dưới 5 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="2" @(Model.Sanpham.Giaban >= 5000 && Model.Sanpham.Giaban <= 10000 ? "checked":"")><i></i>Giá từ 5 - 10 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="3" @(Model.Sanpham.Giaban >= 10000 && Model.Sanpham.Giaban <= 20000 ? "checked":"")><i></i>Giá từ 10 - 20 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="4" @(Model.Sanpham.Giaban >= 20000 && Model.Sanpham.Giaban <= 50000 ? "checked":"")><i></i>Giá từ 20 - 50 triệu</label>
-                                <label class="radio"><input type="radio" name="KhoangGia" value="5" @(Model.Sanpham.Giaban > 50000 ? "checked":"")><i></i>Giá trên 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="1" @(Model.Sanpham.Giaban < 5000 ? "checked" : "")><i></i>Giá dưới 5 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="2" @(Model.Sanpham.Giaban >= 5000 && Model.Sanpham.Giaban <= 10000 ? "checked" : "")><i></i>Giá từ 5 - 10 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="3" @(Model.Sanpham.Giaban >= 10000 && Model.Sanpham.Giaban <= 20000 ? "checked" : "")><i></i>Giá từ 10 - 20 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="4" @(Model.Sanpham.Giaban >= 20000 && Model.Sanpham.Giaban <= 50000 ? "checked" : "")><i></i>Giá từ 20 - 50 triệu</label>
+                                <label class="radio"><input type="radio" name="KhoangGia" value="5" @(Model.Sanpham.Giaban > 50000 ? "checked" : "")><i></i>Giá trên 50 triệu</label>
                             </div>
                         </div>
                     </section>
@@ -230,7 +236,7 @@
                                 {
                                     foreach (var item in Model.Nangluongs)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="NangLuong" value="@item.NangluongID" @(Model.Sanpham.NangluongID == item.NangluongID ? "checked":"")><i></i>@item.Ten</label>
+                                        <label class="checkbox"><input type="checkbox" name="NangLuong" value="@item.NangluongID" @(Model.Sanpham.NangluongID == item.NangluongID ? "checked" : "")><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>
@@ -247,7 +253,7 @@
                                 {
                                     foreach (var item in Model.Loaidays)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="LoaiDay" value="@item.LoaidayID" @(Model.Sanpham.LoaidayID == item.LoaidayID ? "checked":"")><i></i>@item.Ten</label>
+                                        <label class="checkbox"><input type="checkbox" name="LoaiDay" value="@item.LoaidayID" @(Model.Sanpham.LoaidayID == item.LoaidayID ? "checked" : "")><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>
@@ -264,7 +270,7 @@
                                 {
                                     foreach (var item in Model.Loaivoes)
                                     {
-                                        <label class="checkbox"><input type="checkbox" name="LoaiVo" value="@item.LoaivoID" @(Model.Sanpham.LoaivoID == item.LoaivoID ? "checked":"")><i></i>@item.Ten</label>
+                                        <label class="checkbox"><input type="checkbox" name="LoaiVo" value="@item.LoaivoID" @(Model.Sanpham.LoaivoID == item.LoaivoID ? "checked" : "")><i></i>@item.Ten</label>
                                     }
                                 }
                             </div>

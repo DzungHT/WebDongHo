@@ -22,7 +22,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "HinhanhID,SanphamID,Url,Hienthi")] Hinhanh hinhanh)
+        public ActionResult Create([Bind(Include = "HinhanhID,SanphamID,Url")] Hinhanh hinhanh)
         {
             ViewBag.IsSuccess = false;
             if (ModelState.IsValid)

@@ -13,17 +13,16 @@
 
         [Required]
         [StringLength(50)]
-
         [Display(Name ="Tên tài khoản")]
         public string Username { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [StringLength(50)]
-
-        [Display(Name ="Họ tên")]
+        [Display(Name = "Họ tên")]
         public string Hoten { get; set; }
 
         [Display(Name = "Ngày sinh")]
@@ -33,26 +32,21 @@
         public bool? Gioitinh { get; set; }
 
         [StringLength(50)]
-
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Display(Name = "Số điện thoại")]
         [StringLength(20)]
+        [Display(Name = "Số điện thoại")]
         public string SDT { get; set; }
 
-        [Display(Name = "Địa chỉ")]
         [StringLength(100)]
+        [Display(Name = "Địa chỉ")]
         public string Diachi { get; set; }
 
-        
-        [StringLength(250)]
-        public string UrlAvatar { get; set; }
-
-        [Display(Name = "Phân quyền")]
+        [Display(Name = "Nhóm quyền người dùng")]
         public int? Role { get; set; }
 
-        [Display(Name = "Trạng thái")]
+        [Display(Name = "Trạng thái tài khoản")]
         public int? Trangthai { get; set; }
     }
 }

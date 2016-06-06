@@ -21,6 +21,7 @@ namespace WebDongHo.DbContext
         public virtual DbSet<Nangluong> Nangluongs { get; set; }
         public virtual DbSet<Nhanhieu> Nhanhieux { get; set; }
         public virtual DbSet<Sanpham> Sanphams { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tintuc> Tintucs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

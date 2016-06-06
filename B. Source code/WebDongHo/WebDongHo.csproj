@@ -1236,6 +1236,7 @@
     <Content Include="Areas\Admin\Views\Accounts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Accounts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Accounts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Sanphams\Anh.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\imagezoom.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1292,6 +1293,7 @@
     <Compile Include="DbContext\Nangluong.cs" />
     <Compile Include="DbContext\Nhanhieu.cs" />
     <Compile Include="DbContext\Sanpham.cs" />
+    <Compile Include="DbContext\sysdiagram.cs" />
     <Compile Include="DbContext\Tintuc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

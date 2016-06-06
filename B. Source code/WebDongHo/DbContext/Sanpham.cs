@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    using System.Web.Mvc;
     [Table("Sanpham")]
     public partial class Sanpham
     {
@@ -19,20 +19,21 @@
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Tên SP")]
+        [Display(Name ="Tên sản phẩm")]
         public string Ten { get; set; }
 
         [Required]
-        [Display(Name = "Mô tả")]
+        [AllowHtml]
+        [Display(Name ="Mô tả")]
         public string Mota { get; set; }
 
-        [Display(Name = "Giá gốc")]
+        [Display(Name = "Giá cũ")]
         public int Giagoc { get; set; }
 
-        [Display(Name = "Giá bán")]
+        [Display(Name = "Giá mới")]
         public int Giaban { get; set; }
 
-        [Display(Name = "Loại SP")]
+        [Display(Name = "Loại sản phẩm")]
         public int LoaiSPID { get; set; }
 
         [Display(Name = "Nhãn hiệu")]
@@ -50,17 +51,17 @@
         [Display(Name = "Số lượng")]
         public int Soluong { get; set; }
 
-        [Display(Name = "Khuyến mại")]
+        [Display(Name = "Khuyến mãi")]
         public float Khuyenmai { get; set; }
 
-        [Display(Name = "Nổi bật")]
+        [Display(Name = "Là sản phẩm nổi bật")]
         public bool IsNoibat { get; set; }
 
-        [Display(Name = "Hiển thị")]
-        public bool Hienthi { get; set; }
-
-        [Display(Name = "Hiển thị trang chủ")]
+        [Display(Name = "Hiển thị trên trang chủ")]
         public bool HienthiTrangChu { get; set; }
+
+        [Display(Name = "Cho phép hiển thị")]
+        public bool Hienthi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Hinhanh> Hinhanhs { get; set; }

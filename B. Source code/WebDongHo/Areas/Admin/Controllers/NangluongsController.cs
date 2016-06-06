@@ -46,7 +46,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NangluongID,Ten,Thutu,IsDel,Hienthi")] Nangluong nangluong)
+        public ActionResult Create([Bind(Include = "NangluongID,Ten,Thutu,Hienthi")] Nangluong nangluong)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NangluongID,Ten,Thutu,IsDel,Hienthi")] Nangluong nangluong)
+        public ActionResult Edit([Bind(Include = "NangluongID,Ten,Thutu,Hienthi")] Nangluong nangluong)
         {
             if (ModelState.IsValid)
             {

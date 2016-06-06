@@ -46,7 +46,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountID,Username,Password,Hoten,Ngaysinh,Gioitinh,Email,SDT,Diachi,UrlAvatar,Role,Trangthai")] Account account)
+        public ActionResult Create([Bind(Include = "AccountID,Username,Password,Hoten,Ngaysinh,Gioitinh,Email,SDT,Diachi,Role,Trangthai")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountID,Username,Password,Hoten,Ngaysinh,Gioitinh,Email,SDT,Diachi,UrlAvatar,Role,Trangthai")] Account account)
+        public ActionResult Edit([Bind(Include = "AccountID,Username,Password,Hoten,Ngaysinh,Gioitinh,Email,SDT,Diachi,Role,Trangthai")] Account account)
         {
             if (ModelState.IsValid)
             {

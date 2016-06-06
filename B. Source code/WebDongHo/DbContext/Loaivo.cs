@@ -19,17 +19,15 @@
 
         [Required]
         [StringLength(50)]
-
         [Display(Name = "Tên loại vỏ")]
         public string Ten { get; set; }
 
         [Display(Name = "Thứ tự hiển thị")]
         public int? Thutu { get; set; }
 
-        [Display(Name = "Hiển thị")]
+        [Display(Name = "Cho phép hiển thị")]
         public bool Hienthi { get; set; }
 
-        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sanpham> Sanphams { get; set; }
     }

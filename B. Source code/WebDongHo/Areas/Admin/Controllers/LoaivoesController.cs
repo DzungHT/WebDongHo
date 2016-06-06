@@ -46,7 +46,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LoaivoID,Ten,Thutu,Hienthi,IsDel")] Loaivo loaivo)
+        public ActionResult Create([Bind(Include = "LoaivoID,Ten,Thutu,Hienthi")] Loaivo loaivo)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebDongHo.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "LoaivoID,Ten,Thutu,Hienthi,IsDel")] Loaivo loaivo)
+        public ActionResult Edit([Bind(Include = "LoaivoID,Ten,Thutu,Hienthi")] Loaivo loaivo)
         {
             if (ModelState.IsValid)
             {
