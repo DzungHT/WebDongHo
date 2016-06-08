@@ -21,14 +21,15 @@
         text-decoration: none;
         text-transform: uppercase;
     }
-    #submit:hover{
-        background: #73b6e1;
-        transition: 0.5s all;
-        -webkit-transition: 0.5s all;
-        -o-transition: 0.5s all;
-        -moz-transition: 0.5s all;
-        -ms-transition: 0.5s all;
-    }
+
+        #submit:hover {
+            background: #73b6e1;
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+        }
 </style>
 
 <!--start-breadcrumbs-->
@@ -68,16 +69,25 @@
                         {
                             foreach (var item in Model)
                             {
-                    <ul class="cart-header" id="CartItem_@item.SanphamID">
-                        <div class="close1" id="close_@item.SanphamID"> </div>
-                        <li class="ring-in">
-                            <a href="/ChitietSP/Index/@item.SanphamID"><img src="@(item.Hinhanhs.Count > 0 ? item.Hinhanhs.ToList()[0].Url:"/images/nophoto.jpg")" class="img-responsive" alt=""></a>
-                        </li>
-                        <li><span class="name">@item.Ten</span></li>
-                        <li><span class="cost">@((item.Giaban * 1000).ToString("#,#")) VNĐ</span></li>
-                        <li><span class="cost"><input class="soluong" data-sanphamid="@item.SanphamID" type="number" value="@CartSession.Session.Find(x => x.SanphamID == item.SanphamID).Soluong" min="0" max="@item.Soluong" /></span></li>
-                        <div class="clearfix"> </div>
-                    </ul>
+                                <ul class="cart-header" id="CartItem_@item.SanphamID">
+                                    <div class="close1" id="close_@item.SanphamID"> </div>
+                                    <li class="ring-in">
+                                        <a href="/ChitietSP/Index/@item.SanphamID"><img src="@(item.Hinhanhs.Count > 0 ? item.Hinhanhs.ToList()[0].Url:"/images/nophoto.jpg")" class="img-responsive" alt=""></a>
+                                    </li>
+                                    <li><span class="name">@item.Ten</span></li>
+                                    <li><span class="cost">@((item.Giaban * 1000).ToString("#,#")) VNĐ</span></li>
+                                    <li>
+                                        <span class="cost">
+                                            <input class="soluong" data-sanphamid="@item.SanphamID" type="number" value="@CartSession.Session.Find(x => x.SanphamID == item.SanphamID).Soluong" min="0" max="@item.Soluong" />
+                                        </span>
+                                        <br />
+                                        <span id="tongtien_@item.SanphamID">
+                                            <input type="hidden" value="@item.Giaban" />
+                                            <span></span>
+                                        </span>
+                                    </li>
+                                    <div class="clearfix"> </div>
+                                </ul>
                             }
                         }
                     }
@@ -93,17 +103,17 @@
 
             </div>
             <div class="form-group">
-                <input class="form-control" id="Hoten" name="Hoten" placeholder="Họ tên"/>
+                <input class="form-control" id="Hoten" name="Hoten" placeholder="Họ tên" />
             </div>
             <div class="form-group">
-                <input class="form-control" id="Diachi" name="Diachi" placeholder="Địa chỉ"/>
+                <input class="form-control" id="Diachi" name="Diachi" placeholder="Địa chỉ" />
             </div>
             <div class="form-group">
-                <input class="form-control" id="SDT" name="SDT" placeholder="Số điện thoại"/>
+                <input class="form-control" id="SDT" name="SDT" placeholder="Số điện thoại" />
             </div>
 
             <div class="form-group text-center">
-                <input id="submit" type="submit" value="Đặt hàng online"/>
+                <input id="submit" type="submit" value="Đặt hàng online" />
             </div>
         </form>
     </div>
@@ -147,8 +157,10 @@
             if (value > max) {
                 this.value = this.max;
             }
-
+            value = parseInt(this.value);
             var id = $(this).attr('data-sanphamid');
+            var dg = parseInt($("#tongtien_"+id+" input").val())
+            $("#tongtien_"+id+" span").text(value*dg*1000);
             $.ajax({
                 method: "POST",
                 url: "/cart/updateCart",
@@ -202,19 +214,19 @@
                 }
             },
             messages: {
-                Hoten:{
+                Hoten: {
                     required: "Hãy nhập họ tên của bạn.",
                     maxlength: "Tối đa 50 kí tự"
-                }, 
-                Diachi:{
+                },
+                Diachi: {
                     required: "Hãy nhập địa chỉ bạn đang ở.",
                     maxlength: "Tối đa 150 kí tự"
                 },
                 SDT: {
                     required: 'Hãy cung cấp số điện thoại để chúng tôi có thể liên lạc lại với bạn',
                     number: 'Số điện thoại chỉ có thể chứa các ký tự số.',
-                    maxlength:'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số',
-                    minlength:'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số'
+                    maxlength: 'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số',
+                    minlength: 'Sai định dạng số điện thoại. Tối thiểu 10 chữ số, tối đa 11 chữ số'
                 }
             }
 

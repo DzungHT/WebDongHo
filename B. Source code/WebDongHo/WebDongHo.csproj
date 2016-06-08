@@ -1633,7 +1633,6 @@
     <Compile Include="DbContext\MyDbContext.cs" />
     <Compile Include="DbContext\Nangluong.cs" />
     <Compile Include="DbContext\Nhanhieu.cs" />
-    <Compile Include="DbContext\AccountDAO.cs" />
     <Compile Include="DbContext\Sanpham.cs" />
     <Compile Include="DbContext\sysdiagram.cs" />
     <Compile Include="DbContext\Tintuc.cs" />
@@ -1641,9 +1640,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\CartSession.cs" />
+    <Compile Include="Helper\UserSession.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CheckoutModel.cs" />
     <Compile Include="Models\ChitietSPModel.cs" />
+    <Compile Include="Models\DangnhapModel.cs" />
     <Compile Include="Models\DanhsachSPModel.cs" />
     <Compile Include="Models\DanhsachSPRequest.cs" />
     <Compile Include="Models\HomeModel.cs" />

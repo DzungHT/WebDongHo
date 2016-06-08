@@ -16,7 +16,7 @@ namespace WebDongHo.Controllers
         public ActionResult Index()
         {
             HomeModel data = new HomeModel();
-            data.lstSP = db.Sanphams.Include(x => x.Hinhanhs).Where(x => x.Hienthi && x.HienthiTrangChu && x.LoaiSP.Hienthi && x.Nhanhieu.Hienthi).ToList();
+            data.lstSP = db.Sanphams.Include(x => x.Hinhanhs).Where(x => x.Hienthi && x.HienthiTrangChu && x.LoaiSP.Hienthi && x.Nhanhieu.Hienthi && x.Soluong > 0).ToList();
             return View(data);
         }
     }

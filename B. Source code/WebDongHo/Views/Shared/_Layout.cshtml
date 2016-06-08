@@ -12,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
-    <title>Trang chủ | Đồng hồ cao cấp</title>
+    <title>Đồng hồ cao cấp - Luxury Watches</title>
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
@@ -66,103 +66,123 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </style>
 </head>
 <body>
+    @functions{
+        string convert(DateTime dt)
+        {
+            string s = "Ngày {0} tháng {1} năm {2}";
+            string[] s1 = new string[] { "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", "mười",
+                                        "mười một","mười hai","mười ba","mười bốn","mười lăm","mười sáu","mười bảy","mười tám","mười chín","hai mươi",
+                                        "hai mốt","hai hai","hai ba","hai tư","hai lăm","hai sáu","hai bảy","hai tám","hai chín", "ba mươi","ba mốt"};
+            return string.Format(s,s1[dt.Day-1],s1[dt.Month -1],dt.Year);
+        }
+    }
     <!--top-header-->
     <div class="top-header">
         <div class="container">
             <div class="top-header-main">
                 <div class="col-md-6 top-header-left">
                     <div class="top-header-left-content" style="color:#fff;">
-                        <a href="/Dangnhap">Đăng nhập</a> | <a href="/Dangky">Đăng ký</a>
+                        @{
+                            if (WebDongHo.Helper.UserSession.User != null)
+                            {
+                                <a href="javascript:;">Xin chào, @(string.IsNullOrEmpty(WebDongHo.Helper.UserSession.User.Hoten)? WebDongHo.Helper.UserSession.User.Username: WebDongHo.Helper.UserSession.User.Hoten)!</a>
+                            }
+                            else
+                            {
+                                <a href="/Dangnhap">Đăng nhập</a> @Html.Raw("|")
+                                <a href="/Dangky">Đăng ký </a>
+                            }
+                        }
+
                         <div class="clearfix"></div>
-                    </div>
                 </div>
-                <div class="col-md-6 top-header-right">
-                    <div class="top-header-right-content">
-                        <a href="/Checkout" style="display:inline-block;float:right;">
-                            <img class="pull-right" src="/images/cart-1.png" alt="" />
-                            <div id="total_cart" class="pull-right">
-                                <span>@WebDongHo.Helper.CartSession.TotalItem</span>
-                            </div>
-                            <br />
-                            <div class="pull-right">Sản phẩm</div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
             </div>
+            <div class="col-md-6 top-header-right">
+                <div class="top-header-right-content">
+                    <a href="/Checkout" style="display:inline-block;float:right;">
+                        <img class="pull-right" src="/images/cart-1.png" alt="" />
+                        <div id="total_cart" class="pull-right">
+                            <span>@WebDongHo.Helper.CartSession.TotalItem</span>
+                        </div>
+                        <br />
+                        <div class="pull-right">Sản phẩm</div>
+                        <div class="clearfix"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <!--top-header-->
-    <!--start-logo-->
-    <div class="logo">
-        <a href="/"><h1>Luxury Watches</h1></a>
-    </div>
-    <!--start-logo-->
-    <!--bottom-header-->
-    @RenderPage("_Navigation.cshtml")
-    <!--bottom-header-->
-    @RenderBody()
-    <!--information-starts-->
-    <div class="information">
-        <div class="container">
-            <div class="infor-top">
-                <div class="col-md-3 infor-left">
-                    <h3>Mạng xã hội</h3>
-                    <ul>
-                        <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
-                        <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
-                        <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 infor-left">
-                    <h3>Thông tin</h3>
-                    <ul>
-                        <li><a href="#"><p>Chương trình khuyến mại</p></a></li>
-                        <li><a href="#"><p>Hướng dẫn và mẹo sử dụng</p></a></li>
-                        <li><a href="#"><p>Điều kiện bảo hành</p></a></li>
-                        <li><a href="contact.html"><p>Liên hệ</p></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 infor-left">
-                    <h3>Tài khoản người dùng</h3>
-                    <ul>
-                        <li><a href="/Dangnhap"><p>Đăng nhập</p></a></li>
-                        <li><a href="/Dangky"><p>Đăng ký</p></a></li>
-                        <li><a href="#"><p>Thông tin tài khoản</p></a></li>
-                        <li><a href="#"><p>Lịch sử mua hàng</p></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 infor-left">
-                    <h3>Thông tin cửa hàng</h3>
-                    <h4>
-                        Luxury Watches shop,
-                        <span>236 Hoàng Quốc Việt,</span>
-                        Cầu Giấy, Hà Nội
-                    </h4>
-                    <h5>+955 123 4567</h5>
-                    <p><a href="mailto:example@email.com">contact@example.com</a></p>
-                </div>
-                <div class="clearfix"></div>
+</div>
+<!--top-header-->
+<!--start-logo-->
+<div class="logo">
+    <a href="/"><h1>Luxury Watches (@convert(DateTime.Now))</h1></a>
+</div>
+<!--start-logo-->
+<!--bottom-header-->
+@RenderPage("_Navigation.cshtml")
+<!--bottom-header-->
+@RenderBody()
+<!--information-starts-->
+<div class="information">
+    <div class="container">
+        <div class="infor-top">
+            <div class="col-md-3 infor-left">
+                <h3>Mạng xã hội</h3>
+                <ul>
+                    <li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+                    <li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+                    <li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+                </ul>
             </div>
+            <div class="col-md-3 infor-left">
+                <h3>Thông tin</h3>
+                <ul>
+                    <li><a href="#"><p>Chương trình khuyến mại</p></a></li>
+                    <li><a href="#"><p>Hướng dẫn và mẹo sử dụng</p></a></li>
+                    <li><a href="#"><p>Điều kiện bảo hành</p></a></li>
+                    <li><a href="contact.html"><p>Liên hệ</p></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 infor-left">
+                <h3>Tài khoản người dùng</h3>
+                <ul>
+                    <li><a href="/Dangnhap"><p>Đăng nhập</p></a></li>
+                    <li><a href="/Dangky"><p>Đăng ký</p></a></li>
+                    <li><a href="#"><p>Thông tin tài khoản</p></a></li>
+                    <li><a href="#"><p>Lịch sử mua hàng</p></a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 infor-left">
+                <h3>Thông tin cửa hàng</h3>
+                <h4>
+                    Luxury Watches shop,
+                    <span>236 Hoàng Quốc Việt,</span>
+                    Cầu Giấy, Hà Nội
+                </h4>
+                <h5>+955 123 4567</h5>
+                <p><a href="mailto:example@email.com">contact@example.com</a></p>
+            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <!--information-end-->
-    <!--footer-starts-->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="col-md-6 footer-left">
-                    <p>© April 2016, Luxury Watches | Create by  <a href="/" target="_blank">DzungHT</a> </p>
-                </div>
-                <div class="clearfix"></div>
+</div>
+<!--information-end-->
+<!--footer-starts-->
+<div class="footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="col-md-6 footer-left">
+                <p>© April 2016, Luxury Watches | Create by  <a href="/" target="_blank">DzungHT</a> </p>
             </div>
+            <div class="clearfix"></div>
         </div>
     </div>
-    <!--footer-end-->
+</div>
+<!--footer-end-->
+<!--Cart script-->
 
-    <!--Cart script-->
-
-    <script src="~/Scripts/Cart.js"></script>
+<script src="~/Scripts/Cart.js"></script>
 </body>
 </html>

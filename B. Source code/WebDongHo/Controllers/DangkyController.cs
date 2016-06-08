@@ -23,7 +23,7 @@ namespace WebDongHo.Controllers
             if(a.Count == 0)
             {
                 acc.Role = 3;
-                acc.Trangthai = 1;
+                acc.Trangthai = 2;
                 db.Accounts.Add(acc);
                 db.SaveChanges();
                 ViewBag.MessageError = "Bạn có thể đăng nhập ngay bây giờ.";
